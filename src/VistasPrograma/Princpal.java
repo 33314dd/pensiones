@@ -1,4 +1,4 @@
-package login;
+package VistasPrograma;
 
 import java.awt.Color;
 
@@ -6,12 +6,13 @@ import java.awt.Color;
  *
  * @author diego
  */
-public class Login extends javax.swing.JFrame {
+public class Princpal extends javax.swing.JFrame {
 
     int xMouse, yMouse;
 
-    public Login() {
+    public Princpal() {
         initComponents();
+        this.setLocationRelativeTo(null); //nos permite iniciar la ventana del programa en medio del pc
     }
 
     @SuppressWarnings("unchecked")
@@ -46,7 +47,7 @@ public class Login extends javax.swing.JFrame {
 
         Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoblanco.png"))); // NOI18N
-        background.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 800, 120));
+        background.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 130, 160));
 
         textoBajoLogo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         textoBajoLogo.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,7 +200,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 794, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,20 +299,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Princpal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Princpal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Princpal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Princpal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Princpal().setVisible(true);
             }
         });
     }
