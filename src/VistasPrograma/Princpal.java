@@ -54,7 +54,7 @@ public class Princpal extends javax.swing.JFrame {
         ImprimirBtnTxt = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        ClienteTpb = new javax.swing.JPanel();
         RutClienteTxt = new javax.swing.JTextField();
         NombreClienteTxt = new javax.swing.JTextField();
         TelefonoTxt = new javax.swing.JTextField();
@@ -70,8 +70,15 @@ public class Princpal extends javax.swing.JFrame {
         NuevoClienteBtnTxt = new javax.swing.JLabel();
         EliminarClienteBtn = new javax.swing.JPanel();
         EliminarClienteBtnTxt = new javax.swing.JLabel();
+        DvTxt = new javax.swing.JTextField();
+        ProductosTpb = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         jTextField8 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         fondoSuperior = new javax.swing.JLabel();
 
@@ -85,7 +92,7 @@ public class Princpal extends javax.swing.JFrame {
 
         Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoblanco.png"))); // NOI18N
-        background.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 800, 100));
+        background.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 790, 100));
 
         InformeBtn.setBackground(new java.awt.Color(144, 153, 162));
 
@@ -523,7 +530,12 @@ public class Princpal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cotizar", jPanel4);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        ClienteTpb.setBackground(new java.awt.Color(255, 255, 255));
+        ClienteTpb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ClienteTpbMousePressed(evt);
+            }
+        });
 
         RutClienteTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         RutClienteTxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -549,16 +561,31 @@ public class Princpal extends javax.swing.JFrame {
         TelefonoTxt.setForeground(new java.awt.Color(153, 153, 153));
         TelefonoTxt.setText("Telefono");
         TelefonoTxt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TelefonoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TelefonoTxtMousePressed(evt);
+            }
+        });
 
         RazonSocialTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         RazonSocialTxt.setForeground(new java.awt.Color(153, 153, 153));
         RazonSocialTxt.setText("Razon Social");
         RazonSocialTxt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        RazonSocialTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                RazonSocialTxtMousePressed(evt);
+            }
+        });
 
         DireccionTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         DireccionTxt.setForeground(new java.awt.Color(153, 153, 153));
         DireccionTxt.setText("Direccion");
         DireccionTxt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        DireccionTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                DireccionTxtMousePressed(evt);
+            }
+        });
 
         jTable2.setForeground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -723,86 +750,150 @@ public class Princpal extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTextField8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField8.setText("Dv");
-        jTextField8.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        DvTxt.setForeground(new java.awt.Color(153, 153, 153));
+        DvTxt.setText("Dv");
+        DvTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                DvTxtMousePressed(evt);
+            }
+        });
+        DvTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DvTxtActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ClienteTpbLayout = new javax.swing.GroupLayout(ClienteTpb);
+        ClienteTpb.setLayout(ClienteTpbLayout);
+        ClienteTpbLayout.setHorizontalGroup(
+            ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ClienteScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(ClienteTpbLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(RutClienteTxt)
-                    .addComponent(NombreClienteTxt)
-                    .addComponent(RazonSocialTxt))
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(RazonSocialTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NombreClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RutClienteTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DireccionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ActualizarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(TelefonoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(NuevoClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TelefonoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DireccionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DvTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ActualizarClienteBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NuevoClienteBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EliminarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AgregarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(ClienteScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(AgregarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ActualizarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NombreClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DireccionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RutClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        ClienteTpbLayout.setVerticalGroup(
+            ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienteTpbLayout.createSequentialGroup()
+                .addComponent(ClienteScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RutClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DvTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(NombreClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DireccionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AgregarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ActualizarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(NuevoClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(EliminarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(RazonSocialTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(TelefonoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cliente", jPanel1);
+        jTabbedPane1.addTab("Cliente", ClienteTpb);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        ProductosTpb.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+        jTable3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Marca", "Categoria", "Cantidad", "Precio"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jTable3.getColumnModel().getColumn(1).setPreferredWidth(30);
+            jTable3.getColumnModel().getColumn(2).setPreferredWidth(50);
+            jTable3.getColumnModel().getColumn(3).setPreferredWidth(30);
+            jTable3.getColumnModel().getColumn(4).setPreferredWidth(30);
+        }
+
+        jTextField8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTextField8.setText("Nombre");
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+
+        jTextField9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTextField9.setText("Marca");
+
+        jTextField10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTextField10.setText("Precio");
+
+        jTextField11.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTextField11.setText("Categoria");
+
+        jTextField12.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTextField12.setText("Cantidad");
+
+        javax.swing.GroupLayout ProductosTpbLayout = new javax.swing.GroupLayout(ProductosTpb);
+        ProductosTpb.setLayout(ProductosTpbLayout);
+        ProductosTpbLayout.setHorizontalGroup(
+            ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductosTpbLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                        .addComponent(jTextField9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                    .addComponent(jTextField12))
+                .addGap(14, 14, 14))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 337, Short.MAX_VALUE)
+        ProductosTpbLayout.setVerticalGroup(
+            ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProductosTpbLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Productos", jPanel2);
+        jTabbedPane1.addTab("Productos", ProductosTpb);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -819,10 +910,10 @@ public class Princpal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Informe", jPanel3);
 
-        background.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 580, 370));
+        background.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 580, 370));
 
         fondoSuperior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/nube3.png"))); // NOI18N
-        background.add(fondoSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 26, 810, 490));
+        background.add(fondoSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 810, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -975,7 +1066,7 @@ public class Princpal extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarClienteBtnTxtMouseEntered
 
     private void NombreClienteTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreClienteTxtMousePressed
-        // TODO add your handling code here:
+        //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
         if (NombreClienteTxt.getText().equals("Nombre")) {
             NombreClienteTxt.setText("");
             NombreClienteTxt.setForeground(Color.black);
@@ -984,10 +1075,26 @@ public class Princpal extends javax.swing.JFrame {
             RutClienteTxt.setText("Rut sin Guion");
             RutClienteTxt.setForeground(Color.gray);
         }
+        if (RazonSocialTxt.getText().isEmpty()) {
+            RazonSocialTxt.setText("Razon Social");
+            RazonSocialTxt.setForeground(Color.gray);
+        }
+        if (DireccionTxt.getText().isEmpty()) {
+            DireccionTxt.setText("Direccion");
+            DireccionTxt.setForeground(Color.gray);
+        }
+        if (DvTxt.getText().isEmpty()) {
+            DvTxt.setText("Dv");
+            DvTxt.setForeground(Color.gray);
+        }
+        if (TelefonoTxt.getText().isEmpty()) {
+            TelefonoTxt.setText("Telefono");
+            TelefonoTxt.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_NombreClienteTxtMousePressed
 
     private void RutClienteTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RutClienteTxtMousePressed
-        // TODO add your handling code here:
+        //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
         if (RutClienteTxt.getText().equals("Rut sin Guion")) {
             RutClienteTxt.setText("");
             RutClienteTxt.setForeground(Color.black);
@@ -996,8 +1103,147 @@ public class Princpal extends javax.swing.JFrame {
             NombreClienteTxt.setText("Nombre");
             NombreClienteTxt.setForeground(Color.gray);
         }
-        
+        if (RazonSocialTxt.getText().isEmpty()) {
+            RazonSocialTxt.setText("Razon Social");
+            RazonSocialTxt.setForeground(Color.gray);
+        }
+        if (DireccionTxt.getText().isEmpty()) {
+            DireccionTxt.setText("Direccion");
+            DireccionTxt.setForeground(Color.gray);
+        }
+        if (DvTxt.getText().isEmpty()) {
+            DvTxt.setText("Dv");
+            DvTxt.setForeground(Color.gray);
+        }
+        if (TelefonoTxt.getText().isEmpty()) {
+            TelefonoTxt.setText("Telefono");
+            TelefonoTxt.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_RutClienteTxtMousePressed
+
+    private void RazonSocialTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RazonSocialTxtMousePressed
+        //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
+        if (RazonSocialTxt.getText().equals("Razon Social")) {
+            RazonSocialTxt.setText("");
+            RazonSocialTxt.setForeground(Color.black);
+        }
+        if (RutClienteTxt.getText().isEmpty()) {
+            RutClienteTxt.setText("Rut sin Guion");
+            RutClienteTxt.setForeground(Color.gray);
+        }
+        if (NombreClienteTxt.getText().isEmpty()) {
+            NombreClienteTxt.setText("Nombre");
+            NombreClienteTxt.setForeground(Color.gray);
+        }
+        if (DireccionTxt.getText().isEmpty()) {
+            DireccionTxt.setText("Direccion");
+            DireccionTxt.setForeground(Color.gray);
+        }
+        if (DvTxt.getText().isEmpty()) {
+            DvTxt.setText("Dv");
+            DvTxt.setForeground(Color.gray);
+        }
+        if (TelefonoTxt.getText().isEmpty()) {
+            TelefonoTxt.setText("Telefono");
+            TelefonoTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_RazonSocialTxtMousePressed
+
+    private void DireccionTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DireccionTxtMousePressed
+        //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
+        if (DireccionTxt.getText().equals("Direccion")) {
+            DireccionTxt.setText("");
+            DireccionTxt.setForeground(Color.black);
+        }
+        if (RutClienteTxt.getText().isEmpty()) {
+            RutClienteTxt.setText("Rut sin Guion");
+            RutClienteTxt.setForeground(Color.gray);
+        }
+        if (RazonSocialTxt.getText().isEmpty()) {
+            RazonSocialTxt.setText("Razon Social");
+            RazonSocialTxt.setForeground(Color.gray);
+        }
+        if (NombreClienteTxt.getText().isEmpty()) {
+            NombreClienteTxt.setText("Nombre");
+            NombreClienteTxt.setForeground(Color.gray);
+        }
+        if (DvTxt.getText().isEmpty()) {
+            DvTxt.setText("Dv");
+            DvTxt.setForeground(Color.gray);
+        }
+        if (TelefonoTxt.getText().isEmpty()) {
+            TelefonoTxt.setText("Telefono");
+            TelefonoTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_DireccionTxtMousePressed
+
+    private void ClienteTpbMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClienteTpbMousePressed
+
+    }//GEN-LAST:event_ClienteTpbMousePressed
+
+    private void DvTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DvTxtMousePressed
+        //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
+        if (DvTxt.getText().equals("Dv")) {
+            DvTxt.setText("");
+            DvTxt.setForeground(Color.black);
+        }
+        if (RutClienteTxt.getText().isEmpty()) {
+            RutClienteTxt.setText("Rut sin Guion");
+            RutClienteTxt.setForeground(Color.gray);
+        }
+        if (RazonSocialTxt.getText().isEmpty()) {
+            RazonSocialTxt.setText("Razon Social");
+            RazonSocialTxt.setForeground(Color.gray);
+        }
+        if (DireccionTxt.getText().isEmpty()) {
+            DireccionTxt.setText("Direccion");
+            DireccionTxt.setForeground(Color.gray);
+        }
+        if (NombreClienteTxt.getText().isEmpty()) {
+            NombreClienteTxt.setText("Nombre");
+            NombreClienteTxt.setForeground(Color.gray);
+        }
+        if (TelefonoTxt.getText().isEmpty()) {
+            TelefonoTxt.setText("Telefono");
+            TelefonoTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_DvTxtMousePressed
+
+    private void DvTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DvTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DvTxtActionPerformed
+
+    private void TelefonoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelefonoTxtMousePressed
+        //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
+        if (TelefonoTxt.getText().equals("Telefono")) {
+            TelefonoTxt.setText("");
+            TelefonoTxt.setForeground(Color.black);
+        }
+        if (RutClienteTxt.getText().isEmpty()) {
+            RutClienteTxt.setText("Rut sin Guion");
+            RutClienteTxt.setForeground(Color.gray);
+        }
+        if (RazonSocialTxt.getText().isEmpty()) {
+            RazonSocialTxt.setText("Razon Social");
+            RazonSocialTxt.setForeground(Color.gray);
+        }
+        if (DireccionTxt.getText().isEmpty()) {
+            DireccionTxt.setText("Direccion");
+            DireccionTxt.setForeground(Color.gray);
+        }
+        if (DvTxt.getText().isEmpty()) {
+            DvTxt.setText("Dv");
+            DvTxt.setForeground(Color.gray);
+        }
+        if (NombreClienteTxt.getText().isEmpty()) {
+            NombreClienteTxt.setText("Nombre");
+            NombreClienteTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_TelefonoTxtMousePressed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1045,9 +1291,11 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JLabel CantidadTxt;
     private javax.swing.JLabel CategoriaTxt;
     private javax.swing.JScrollPane ClienteScrollPanel;
+    private javax.swing.JPanel ClienteTpb;
     private javax.swing.JPanel CotizarBtn;
     private javax.swing.JLabel CotizarBtnTxt;
     private javax.swing.JTextField DireccionTxt;
+    private javax.swing.JTextField DvTxt;
     private javax.swing.JPanel EliminarBtn;
     private javax.swing.JLabel EliminarBtnTxt;
     private javax.swing.JPanel EliminarClienteBtn;
@@ -1065,6 +1313,7 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JLabel PrecioTxt;
     private javax.swing.JPanel ProductoBtn;
     private javax.swing.JLabel ProductoBtnTxt;
+    private javax.swing.JPanel ProductosTpb;
     private javax.swing.JTextField RazonSocialTxt;
     private javax.swing.JTextField RutClienteTxt;
     private javax.swing.JTextField TelefonoTxt;
@@ -1075,15 +1324,18 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JPanel header;
     private javax.swing.JLabel idTxt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -1091,5 +1343,6 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
