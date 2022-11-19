@@ -85,8 +85,8 @@ public class Princpal extends javax.swing.JFrame {
         InformeTpb = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        EliminarProductoBtn1 = new javax.swing.JPanel();
-        EliminarProductoBtnTxt1 = new javax.swing.JLabel();
+        GenerarInformeBtn = new javax.swing.JPanel();
+        GenerarInformeBtnTxt = new javax.swing.JLabel();
         fondoSuperior = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -885,7 +885,13 @@ public class Princpal extends javax.swing.JFrame {
         }
 
         NombrePorductoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        NombrePorductoTxt.setForeground(new java.awt.Color(153, 153, 153));
         NombrePorductoTxt.setText("Nombre");
+        NombrePorductoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                NombrePorductoTxtMousePressed(evt);
+            }
+        });
         NombrePorductoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombrePorductoTxtActionPerformed(evt);
@@ -893,16 +899,40 @@ public class Princpal extends javax.swing.JFrame {
         });
 
         MarcaPorductoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        MarcaPorductoTxt.setForeground(new java.awt.Color(153, 153, 153));
         MarcaPorductoTxt.setText("Marca");
+        MarcaPorductoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                MarcaPorductoTxtMousePressed(evt);
+            }
+        });
 
         PrecioPorductoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        PrecioPorductoTxt.setForeground(new java.awt.Color(153, 153, 153));
         PrecioPorductoTxt.setText("Precio");
+        PrecioPorductoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PrecioPorductoTxtMousePressed(evt);
+            }
+        });
 
         CategoriaPorductoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        CategoriaPorductoTxt.setForeground(new java.awt.Color(153, 153, 153));
         CategoriaPorductoTxt.setText("Categoria");
+        CategoriaPorductoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CategoriaPorductoTxtMousePressed(evt);
+            }
+        });
 
         CantidadPorductoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        CantidadPorductoTxt.setForeground(new java.awt.Color(153, 153, 153));
         CantidadPorductoTxt.setText("Cantidad");
+        CantidadPorductoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CantidadPorductoTxtMousePressed(evt);
+            }
+        });
 
         AgregarPorductoBtn.setBackground(new java.awt.Color(144, 153, 162));
 
@@ -1121,38 +1151,38 @@ public class Princpal extends javax.swing.JFrame {
             jTable4.getColumnModel().getColumn(2).setPreferredWidth(30);
         }
 
-        EliminarProductoBtn1.setBackground(new java.awt.Color(144, 153, 162));
+        GenerarInformeBtn.setBackground(new java.awt.Color(144, 153, 162));
 
-        EliminarProductoBtnTxt1.setBackground(new java.awt.Color(255, 255, 255));
-        EliminarProductoBtnTxt1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        EliminarProductoBtnTxt1.setForeground(new java.awt.Color(255, 255, 255));
-        EliminarProductoBtnTxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        EliminarProductoBtnTxt1.setText("GENERAR INFORME");
-        EliminarProductoBtnTxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EliminarProductoBtnTxt1.addMouseListener(new java.awt.event.MouseAdapter() {
+        GenerarInformeBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
+        GenerarInformeBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        GenerarInformeBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
+        GenerarInformeBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        GenerarInformeBtnTxt.setText("GENERAR INFORME");
+        GenerarInformeBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        GenerarInformeBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                EliminarProductoBtnTxt1MouseEntered(evt);
+                GenerarInformeBtnTxtMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                EliminarProductoBtnTxt1MouseExited(evt);
+                GenerarInformeBtnTxtMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout EliminarProductoBtn1Layout = new javax.swing.GroupLayout(EliminarProductoBtn1);
-        EliminarProductoBtn1.setLayout(EliminarProductoBtn1Layout);
-        EliminarProductoBtn1Layout.setHorizontalGroup(
-            EliminarProductoBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout GenerarInformeBtnLayout = new javax.swing.GroupLayout(GenerarInformeBtn);
+        GenerarInformeBtn.setLayout(GenerarInformeBtnLayout);
+        GenerarInformeBtnLayout.setHorizontalGroup(
+            GenerarInformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 141, Short.MAX_VALUE)
-            .addGroup(EliminarProductoBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(EliminarProductoBtn1Layout.createSequentialGroup()
-                    .addComponent(EliminarProductoBtnTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(GenerarInformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(GenerarInformeBtnLayout.createSequentialGroup()
+                    .addComponent(GenerarInformeBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        EliminarProductoBtn1Layout.setVerticalGroup(
-            EliminarProductoBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        GenerarInformeBtnLayout.setVerticalGroup(
+            GenerarInformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 31, Short.MAX_VALUE)
-            .addGroup(EliminarProductoBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(EliminarProductoBtnTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+            .addGroup(GenerarInformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(GenerarInformeBtnTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout InformeTpbLayout = new javax.swing.GroupLayout(InformeTpb);
@@ -1162,7 +1192,7 @@ public class Princpal extends javax.swing.JFrame {
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
             .addGroup(InformeTpbLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(EliminarProductoBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(GenerarInformeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         InformeTpbLayout.setVerticalGroup(
@@ -1170,7 +1200,7 @@ public class Princpal extends javax.swing.JFrame {
             .addGroup(InformeTpbLayout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(EliminarProductoBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(GenerarInformeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
@@ -1526,43 +1556,59 @@ public class Princpal extends javax.swing.JFrame {
 
     private void AgregarPorductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarPorductoBtnTxtMouseEntered
         // TODO add your handling code here:
+        AgregarPorductoBtn.setBackground(new Color(110, 122, 147));
     }//GEN-LAST:event_AgregarPorductoBtnTxtMouseEntered
 
     private void AgregarPorductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarPorductoBtnTxtMouseExited
         // TODO add your handling code here:
+        
+        AgregarPorductoBtn.setBackground(new Color(144, 153, 162));
     }//GEN-LAST:event_AgregarPorductoBtnTxtMouseExited
 
     private void ActualizarProductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarProductoBtnTxtMouseEntered
         // TODO add your handling code here:
+        ActualizarPorductoBtn.setBackground(new Color(110, 122, 147));
+        
     }//GEN-LAST:event_ActualizarProductoBtnTxtMouseEntered
 
     private void ActualizarProductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarProductoBtnTxtMouseExited
         // TODO add your handling code here:
+        
+        ActualizarPorductoBtn.setBackground(new Color(144, 153, 162));
     }//GEN-LAST:event_ActualizarProductoBtnTxtMouseExited
 
     private void NuevoProductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoProductoBtnTxtMouseEntered
         // TODO add your handling code here:
+        NuevoProductoBtn.setBackground(new Color(110, 122, 147));
+        
     }//GEN-LAST:event_NuevoProductoBtnTxtMouseEntered
 
     private void NuevoProductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoProductoBtnTxtMouseExited
         // TODO add your handling code here:
+        
+        NuevoProductoBtn.setBackground(new Color(144, 153, 162));
     }//GEN-LAST:event_NuevoProductoBtnTxtMouseExited
 
     private void EliminarProductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarProductoBtnTxtMouseEntered
         // TODO add your handling code here:
+        EliminarProductoBtn.setBackground(new Color(110, 122, 147));
     }//GEN-LAST:event_EliminarProductoBtnTxtMouseEntered
 
     private void EliminarProductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarProductoBtnTxtMouseExited
         // TODO add your handling code here:
+        
+        EliminarProductoBtn.setBackground(new Color(144, 153, 162));
     }//GEN-LAST:event_EliminarProductoBtnTxtMouseExited
 
-    private void EliminarProductoBtnTxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarProductoBtnTxt1MouseEntered
+    private void GenerarInformeBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerarInformeBtnTxtMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_EliminarProductoBtnTxt1MouseEntered
+        GenerarInformeBtn.setBackground(new Color(110, 122, 147));
+    }//GEN-LAST:event_GenerarInformeBtnTxtMouseEntered
 
-    private void EliminarProductoBtnTxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarProductoBtnTxt1MouseExited
+    private void GenerarInformeBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerarInformeBtnTxtMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_EliminarProductoBtnTxt1MouseExited
+         GenerarInformeBtn.setBackground(new Color(144, 153, 162));
+    }//GEN-LAST:event_GenerarInformeBtnTxtMouseExited
 
     private void IdCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IdCotizarTxtMousePressed
         // TODO add your handling code here:
@@ -1700,6 +1746,123 @@ public class Princpal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ActualizarClienteBtnMouseExited
 
+    private void NombrePorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombrePorductoTxtMousePressed
+        
+        if (NombrePorductoTxt.getText().equals("Nombre")) {
+            NombrePorductoTxt.setText("");
+            NombrePorductoTxt.setForeground(Color.black);
+        }
+        if (MarcaPorductoTxt.getText().isEmpty()) {
+            MarcaPorductoTxt.setText("Marca");
+            MarcaPorductoTxt.setForeground(Color.gray);
+        }
+        if (PrecioPorductoTxt.getText().isEmpty()) {
+            PrecioPorductoTxt.setText("Precio");
+            PrecioPorductoTxt.setForeground(Color.gray);
+        }
+        if (CategoriaPorductoTxt.getText().isEmpty()) {
+            CategoriaPorductoTxt.setText("Categoria");
+            CategoriaPorductoTxt.setForeground(Color.gray);
+        }
+        if (CantidadPorductoTxt.getText().isEmpty()) {
+            CantidadPorductoTxt.setText("Cantidad");
+            CantidadPorductoTxt.setForeground(Color.gray);
+        }
+        
+    }//GEN-LAST:event_NombrePorductoTxtMousePressed
+
+    private void MarcaPorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarcaPorductoTxtMousePressed
+        if (MarcaPorductoTxt.getText().equals("Marca")) {
+            MarcaPorductoTxt.setText("");
+            MarcaPorductoTxt.setForeground(Color.black);
+        }
+        if (NombrePorductoTxt.getText().isEmpty()) {
+            NombrePorductoTxt.setText("Nombre");
+            NombrePorductoTxt.setForeground(Color.gray);
+        }
+        if (PrecioPorductoTxt.getText().isEmpty()) {
+            PrecioPorductoTxt.setText("Precio");
+            PrecioPorductoTxt.setForeground(Color.gray);
+        }
+        if (CategoriaPorductoTxt.getText().isEmpty()) {
+            CategoriaPorductoTxt.setText("Categoria");
+            CategoriaPorductoTxt.setForeground(Color.gray);
+        }
+        if (CantidadPorductoTxt.getText().isEmpty()) {
+            CantidadPorductoTxt.setText("Cantidad");
+            CantidadPorductoTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_MarcaPorductoTxtMousePressed
+
+    private void PrecioPorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrecioPorductoTxtMousePressed
+        if (PrecioPorductoTxt.getText().equals("Precio")) {
+            PrecioPorductoTxt.setText("");
+            PrecioPorductoTxt.setForeground(Color.black);
+        }
+        if (NombrePorductoTxt.getText().isEmpty()) {
+            NombrePorductoTxt.setText("Nombre");
+            NombrePorductoTxt.setForeground(Color.gray);
+        }
+        if (MarcaPorductoTxt.getText().isEmpty()) {
+            MarcaPorductoTxt.setText("Marca");
+            MarcaPorductoTxt.setForeground(Color.gray);
+        }
+        if (CategoriaPorductoTxt.getText().isEmpty()) {
+            CategoriaPorductoTxt.setText("Categoria");
+            CategoriaPorductoTxt.setForeground(Color.gray);
+        }
+        if (CantidadPorductoTxt.getText().isEmpty()) {
+            CantidadPorductoTxt.setText("Dv");
+            CantidadPorductoTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_PrecioPorductoTxtMousePressed
+
+    private void CategoriaPorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CategoriaPorductoTxtMousePressed
+        if (CategoriaPorductoTxt.getText().equals("Categoria")) {
+            CategoriaPorductoTxt.setText("");
+            CategoriaPorductoTxt.setForeground(Color.black);
+        }
+        if (NombrePorductoTxt.getText().isEmpty()) {
+            NombrePorductoTxt.setText("Nombre");
+            NombrePorductoTxt.setForeground(Color.gray);
+        }
+        if (MarcaPorductoTxt.getText().isEmpty()) {
+            MarcaPorductoTxt.setText("Marca");
+            MarcaPorductoTxt.setForeground(Color.gray);
+        }
+        if (PrecioPorductoTxt.getText().isEmpty()) {
+            PrecioPorductoTxt.setText("Precio");
+            PrecioPorductoTxt.setForeground(Color.gray);
+        }
+        if (CantidadPorductoTxt.getText().isEmpty()) {
+            CantidadPorductoTxt.setText("Cantidad");
+            CantidadPorductoTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_CategoriaPorductoTxtMousePressed
+
+    private void CantidadPorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantidadPorductoTxtMousePressed
+        if (CantidadPorductoTxt.getText().equals("Cantidad")) {
+            CantidadPorductoTxt.setText("");
+            CantidadPorductoTxt.setForeground(Color.black);
+        }
+        if (NombrePorductoTxt.getText().isEmpty()) {
+            NombrePorductoTxt.setText("Nombre");
+            NombrePorductoTxt.setForeground(Color.gray);
+        }
+        if (MarcaPorductoTxt.getText().isEmpty()) {
+            MarcaPorductoTxt.setText("Marca");
+            MarcaPorductoTxt.setForeground(Color.gray);
+        }
+        if (PrecioPorductoTxt.getText().isEmpty()) {
+            PrecioPorductoTxt.setText("Precio");
+            PrecioPorductoTxt.setForeground(Color.gray);
+        }
+        if (CategoriaPorductoTxt.getText().isEmpty()) {
+            CategoriaPorductoTxt.setText("Categoria");
+            CategoriaPorductoTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_CantidadPorductoTxtMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -1763,11 +1926,11 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JPanel EliminarClienteBtn;
     private javax.swing.JLabel EliminarClienteBtnTxt;
     private javax.swing.JPanel EliminarProductoBtn;
-    private javax.swing.JPanel EliminarProductoBtn1;
     private javax.swing.JLabel EliminarProductoBtnTxt;
-    private javax.swing.JLabel EliminarProductoBtnTxt1;
     private javax.swing.JPanel GenerarBtn;
     private javax.swing.JLabel GenerarBtnTxt;
+    private javax.swing.JPanel GenerarInformeBtn;
+    private javax.swing.JLabel GenerarInformeBtnTxt;
     private javax.swing.JTextField IdCotizarTxt;
     private javax.swing.JPanel InformeBtn;
     private javax.swing.JLabel InformeBtnTxt;
