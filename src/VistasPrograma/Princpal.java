@@ -46,7 +46,7 @@ public class Princpal extends javax.swing.JFrame {
         EliminarBtnTxt = new javax.swing.JLabel();
         GenerarBtn = new javax.swing.JPanel();
         GenerarBtnTxt = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        RutClienteCotizarTxt = new javax.swing.JTextField();
         TotalCotizarTxt = new javax.swing.JLabel();
         TotalLbl = new javax.swing.JLabel();
         ClienteTpb = new javax.swing.JPanel();
@@ -365,6 +365,11 @@ public class Princpal extends javax.swing.JFrame {
         PrecioCotizarTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         PrecioCotizarTxt.setForeground(new java.awt.Color(153, 153, 153));
         PrecioCotizarTxt.setText("Precio");
+        PrecioCotizarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PrecioCotizarTxtMousePressed(evt);
+            }
+        });
 
         CategoriaCotizarTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         CategoriaCotizarTxt.setForeground(new java.awt.Color(153, 153, 153));
@@ -475,12 +480,17 @@ public class Princpal extends javax.swing.JFrame {
                 .addComponent(GenerarBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTextField7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField7.setText("Rut Cliente");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        RutClienteCotizarTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        RutClienteCotizarTxt.setForeground(new java.awt.Color(153, 153, 153));
+        RutClienteCotizarTxt.setText("Rut Cliente");
+        RutClienteCotizarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                RutClienteCotizarTxtMousePressed(evt);
+            }
+        });
+        RutClienteCotizarTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                RutClienteCotizarTxtActionPerformed(evt);
             }
         });
 
@@ -514,7 +524,7 @@ public class Princpal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CantidadCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CotizarTpbLayout.createSequentialGroup()
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RutClienteCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)
                         .addComponent(GenerarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -546,7 +556,7 @@ public class Princpal extends javax.swing.JFrame {
                             .addComponent(TotalLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(TotalCotizarTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EliminarBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RutClienteCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
         );
 
@@ -1326,9 +1336,9 @@ public class Princpal extends javax.swing.JFrame {
         GenerarBtn.setBackground(new Color(144, 153, 162));
     }//GEN-LAST:event_GenerarBtnTxtMouseExited
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void RutClienteCotizarTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RutClienteCotizarTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_RutClienteCotizarTxtActionPerformed
 
     private void EliminarClienteBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarClienteBtnTxtMouseExited
         // TODO add your handling code here:
@@ -1632,6 +1642,14 @@ public class Princpal extends javax.swing.JFrame {
             CategoriaCotizarTxt.setText("Categoria");
             CategoriaCotizarTxt.setForeground(Color.gray);
         }
+        if (RutClienteCotizarTxt.getText().isEmpty()) {
+            RutClienteCotizarTxt.setText("Rut Cliente");
+            RutClienteCotizarTxt.setForeground(Color.gray);
+        }
+        if (PrecioCotizarTxt.getText().isEmpty()) {
+            PrecioCotizarTxt.setText("Precio");
+            PrecioCotizarTxt.setForeground(Color.gray);
+        }
         
     }//GEN-LAST:event_IdCotizarTxtMousePressed
 
@@ -1656,6 +1674,14 @@ public class Princpal extends javax.swing.JFrame {
         if (CategoriaCotizarTxt.getText().isEmpty()) {
             CategoriaCotizarTxt.setText("Categoria");
             CategoriaCotizarTxt.setForeground(Color.gray);
+        }
+        if (RutClienteCotizarTxt.getText().isEmpty()) {
+            RutClienteCotizarTxt.setText("Rut Cliente");
+            RutClienteCotizarTxt.setForeground(Color.gray);
+        }
+        if (PrecioCotizarTxt.getText().isEmpty()) {
+            PrecioCotizarTxt.setText("Precio");
+            PrecioCotizarTxt.setForeground(Color.gray);
         }
         
         
@@ -1683,6 +1709,14 @@ public class Princpal extends javax.swing.JFrame {
             CategoriaCotizarTxt.setText("Categoria");
             CategoriaCotizarTxt.setForeground(Color.gray);
         }
+        if (RutClienteCotizarTxt.getText().isEmpty()) {
+            RutClienteCotizarTxt.setText("Rut Cliente");
+            RutClienteCotizarTxt.setForeground(Color.gray);
+        }
+        if (PrecioCotizarTxt.getText().isEmpty()) {
+            PrecioCotizarTxt.setText("Precio");
+            PrecioCotizarTxt.setForeground(Color.gray);
+        }
         
     }//GEN-LAST:event_MarcaCotizarTxtMousePressed
 
@@ -1707,6 +1741,14 @@ public class Princpal extends javax.swing.JFrame {
         if (MarcaCotizarTxt.getText().isEmpty()) {
             MarcaCotizarTxt.setText("Marca");
             MarcaCotizarTxt.setForeground(Color.gray);
+        }
+        if (RutClienteCotizarTxt.getText().isEmpty()) {
+            RutClienteCotizarTxt.setText("Rut Cliente");
+            RutClienteCotizarTxt.setForeground(Color.gray);
+        }
+        if (PrecioCotizarTxt.getText().isEmpty()) {
+            PrecioCotizarTxt.setText("Precio");
+            PrecioCotizarTxt.setForeground(Color.gray);
         }
         
     }//GEN-LAST:event_CategoriaCotizarTxtMousePressed
@@ -1733,6 +1775,14 @@ public class Princpal extends javax.swing.JFrame {
         if (CategoriaCotizarTxt.getText().isEmpty()) {
             CategoriaCotizarTxt.setText("Categoria");
             CategoriaCotizarTxt.setForeground(Color.gray);
+        }
+        if (RutClienteCotizarTxt.getText().isEmpty()) {
+            RutClienteCotizarTxt.setText("Rut Cliente");
+            RutClienteCotizarTxt.setForeground(Color.gray);
+        }
+        if (PrecioCotizarTxt.getText().isEmpty()) {
+            PrecioCotizarTxt.setText("Precio");
+            PrecioCotizarTxt.setForeground(Color.gray);
         }
     }//GEN-LAST:event_CantidadCotizarTxtMousePressed
 
@@ -1863,6 +1913,70 @@ public class Princpal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CantidadPorductoTxtMousePressed
 
+    private void RutClienteCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RutClienteCotizarTxtMousePressed
+        // TODO add your handling code here:
+        if (RutClienteCotizarTxt.getText().equals("Rut Cliente")) {
+            RutClienteCotizarTxt.setText("");
+            RutClienteCotizarTxt.setForeground(Color.black);
+        }
+        if (CantidadCotizarTxt.getText().isEmpty()) {
+            CantidadCotizarTxt.setText("Cantidad");
+            CantidadCotizarTxt.setForeground(Color.gray);
+        }
+        if (IdCotizarTxt.getText().isEmpty()) {
+            IdCotizarTxt.setText("ID");
+            IdCotizarTxt.setForeground(Color.gray);
+        }
+        if (NombreCotizarTxt.getText().isEmpty()) {
+            NombreCotizarTxt.setText("Nombre");
+            NombreCotizarTxt.setForeground(Color.gray);
+        }
+        if (CategoriaCotizarTxt.getText().isEmpty()) {
+            CategoriaCotizarTxt.setText("Categoria");
+            CategoriaCotizarTxt.setForeground(Color.gray);
+        }
+        if (MarcaCotizarTxt.getText().isEmpty()) {
+            MarcaCotizarTxt.setText("Marca");
+            MarcaCotizarTxt.setForeground(Color.gray);
+        }
+        if (PrecioCotizarTxt.getText().isEmpty()) {
+            PrecioCotizarTxt.setText("Precio");
+            PrecioCotizarTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_RutClienteCotizarTxtMousePressed
+
+    private void PrecioCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrecioCotizarTxtMousePressed
+        // TODO add your handling code here:
+        if (PrecioCotizarTxt.getText().equals("Precio")) {
+            PrecioCotizarTxt.setText("");
+            PrecioCotizarTxt.setForeground(Color.black);
+        }
+        if (CantidadCotizarTxt.getText().isEmpty()) {
+            CantidadCotizarTxt.setText("Cantidad");
+            CantidadCotizarTxt.setForeground(Color.gray);
+        }
+        if (IdCotizarTxt.getText().isEmpty()) {
+            IdCotizarTxt.setText("ID");
+            IdCotizarTxt.setForeground(Color.gray);
+        }
+        if (NombreCotizarTxt.getText().isEmpty()) {
+            NombreCotizarTxt.setText("Nombre");
+            NombreCotizarTxt.setForeground(Color.gray);
+        }
+        if (CategoriaCotizarTxt.getText().isEmpty()) {
+            CategoriaCotizarTxt.setText("Categoria");
+            CategoriaCotizarTxt.setForeground(Color.gray);
+        }
+        if (MarcaCotizarTxt.getText().isEmpty()) {
+            MarcaCotizarTxt.setText("Marca");
+            MarcaCotizarTxt.setForeground(Color.gray);
+        }
+        if (RutClienteCotizarTxt.getText().isEmpty()) {
+            RutClienteCotizarTxt.setText("RutCliente");
+            RutClienteCotizarTxt.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_PrecioCotizarTxtMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -1951,6 +2065,7 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JLabel ProductoBtnTxt;
     private javax.swing.JPanel ProductosTpb;
     private javax.swing.JTextField RazonSocialTxt;
+    private javax.swing.JTextField RutClienteCotizarTxt;
     private javax.swing.JTextField RutClienteTxt;
     private javax.swing.JTabbedPane TablaGeneralTpb;
     private javax.swing.JTextField TelefonoTxt;
@@ -1968,6 +2083,5 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }
