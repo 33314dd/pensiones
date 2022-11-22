@@ -13,6 +13,14 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null); //nos permite iniciar la ventana del programa en medio del pc
+        
+    }
+    public void validar(){
+        String correo = userTxt.getText();
+        String contraseña = String.valueOf(passTxt.getPassword());
+        if (!"".equals(correo)|| !"".equals(contraseña)) {
+            
+        }
     }
 
     @SuppressWarnings("unchecked")

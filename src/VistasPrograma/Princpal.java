@@ -1,6 +1,10 @@
 package VistasPrograma;
 
+import Clases.Cliente;
+import Clases.Usuario;
+import ConexionBase.Conexion;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +17,8 @@ public class Princpal extends javax.swing.JFrame {
     public Princpal() {
         initComponents();
         this.setLocationRelativeTo(null); //nos permite iniciar la ventana del programa en medio del pc
+//    Conexion objetoConexion = new Conexion();
+//    objetoConexion.estableceConexion();
     }
 
     @SuppressWarnings("unchecked")
@@ -21,17 +27,13 @@ public class Princpal extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
-        InformeBtn = new javax.swing.JPanel();
-        InformeBtnTxt = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         exitBtn = new javax.swing.JPanel();
         exitTxt = new javax.swing.JLabel();
-        ProductoBtn = new javax.swing.JPanel();
-        ProductoBtnTxt = new javax.swing.JLabel();
-        AgregarBtn = new javax.swing.JPanel();
-        AgregarBtnTxt = new javax.swing.JLabel();
-        CotizarBtn = new javax.swing.JPanel();
-        CotizarBtnTxt = new javax.swing.JLabel();
+        BtnCliente = new javax.swing.JButton();
+        BtnInforme = new javax.swing.JButton();
+        BtnProducto = new javax.swing.JButton();
+        BtnCotizar = new javax.swing.JButton();
         TablaGeneralTpb = new javax.swing.JTabbedPane();
         CotizarTpb = new javax.swing.JPanel();
         IdCotizarTxt = new javax.swing.JTextField();
@@ -42,30 +44,24 @@ public class Princpal extends javax.swing.JFrame {
         CantidadCotizarTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        EliminarBtn = new javax.swing.JPanel();
-        EliminarBtnTxt = new javax.swing.JLabel();
-        GenerarBtn = new javax.swing.JPanel();
-        GenerarBtnTxt = new javax.swing.JLabel();
         RutClienteCotizarTxt = new javax.swing.JTextField();
         TotalCotizarTxt = new javax.swing.JLabel();
         TotalLbl = new javax.swing.JLabel();
+        btnGenerarCotizar = new javax.swing.JButton();
+        BtnEliminarCotizar = new javax.swing.JButton();
         ClienteTpb = new javax.swing.JPanel();
-        RutClienteTxt = new javax.swing.JTextField();
-        NombreClienteTxt = new javax.swing.JTextField();
-        TelefonoTxt = new javax.swing.JTextField();
-        RazonSocialTxt = new javax.swing.JTextField();
-        DireccionTxt = new javax.swing.JTextField();
+        TxtRutCliente = new javax.swing.JTextField();
+        TxtNombreCliente = new javax.swing.JTextField();
+        TxtTelefonoCliente = new javax.swing.JTextField();
+        TxtRazonSocialCliente = new javax.swing.JTextField();
+        TxtDireccionCliente = new javax.swing.JTextField();
         ClienteScrollPanel = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        AgregarClienteBtn = new javax.swing.JPanel();
-        AgregarClienteBtnTxt = new javax.swing.JLabel();
-        ActualizarClienteBtn = new javax.swing.JPanel();
-        ActualizarClienteBtnTxt = new javax.swing.JLabel();
-        NuevoClienteBtn = new javax.swing.JPanel();
-        NuevoClienteBtnTxt = new javax.swing.JLabel();
-        EliminarClienteBtn = new javax.swing.JPanel();
-        EliminarClienteBtnTxt = new javax.swing.JLabel();
-        DvTxt = new javax.swing.JTextField();
+        TxtDvCliente = new javax.swing.JTextField();
+        BtnEliminarCliente = new javax.swing.JButton();
+        BtnAgregarCliente = new javax.swing.JButton();
+        BtnActualizarCliente = new javax.swing.JButton();
+        BtnNuevoCliente = new javax.swing.JButton();
         ProductosTpb = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -74,19 +70,14 @@ public class Princpal extends javax.swing.JFrame {
         PrecioPorductoTxt = new javax.swing.JTextField();
         CategoriaPorductoTxt = new javax.swing.JTextField();
         CantidadPorductoTxt = new javax.swing.JTextField();
-        AgregarPorductoBtn = new javax.swing.JPanel();
-        AgregarPorductoBtnTxt = new javax.swing.JLabel();
-        ActualizarPorductoBtn = new javax.swing.JPanel();
-        ActualizarProductoBtnTxt = new javax.swing.JLabel();
-        NuevoProductoBtn = new javax.swing.JPanel();
-        NuevoProductoBtnTxt = new javax.swing.JLabel();
-        EliminarProductoBtn = new javax.swing.JPanel();
-        EliminarProductoBtnTxt = new javax.swing.JLabel();
+        BtnActualizarProducto = new javax.swing.JButton();
+        BtnEliminarProducto = new javax.swing.JButton();
+        BtnNuevoProducto1 = new javax.swing.JButton();
+        BtnAgregarProducto1 = new javax.swing.JButton();
         InformeTpb = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        GenerarInformeBtn = new javax.swing.JPanel();
-        GenerarInformeBtnTxt = new javax.swing.JLabel();
+        BtnGenerarInforme = new javax.swing.JButton();
         fondoSuperior = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,46 +91,6 @@ public class Princpal extends javax.swing.JFrame {
         Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logoblanco.png"))); // NOI18N
         background.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 790, 100));
-
-        InformeBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        InformeBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        InformeBtnTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        InformeBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        InformeBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        InformeBtnTxt.setText("INFORME");
-        InformeBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        InformeBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                InformeBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                InformeBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout InformeBtnLayout = new javax.swing.GroupLayout(InformeBtn);
-        InformeBtn.setLayout(InformeBtnLayout);
-        InformeBtnLayout.setHorizontalGroup(
-            InformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-            .addGroup(InformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(InformeBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(InformeBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        InformeBtnLayout.setVerticalGroup(
-            InformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(InformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(InformeBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(InformeBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        background.add(InformeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 180, 40));
 
         header.setBackground(new java.awt.Color(255, 255, 255));
         header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -198,125 +149,29 @@ public class Princpal extends javax.swing.JFrame {
 
         background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 30));
 
-        ProductoBtn.setBackground(new java.awt.Color(144, 153, 162));
+        BtnCliente.setBackground(new java.awt.Color(144, 153, 162));
+        BtnCliente.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        BtnCliente.setForeground(new java.awt.Color(255, 255, 255));
+        BtnCliente.setText("CLIENTE");
+        background.add(BtnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 180, 40));
 
-        ProductoBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        ProductoBtnTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        ProductoBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        ProductoBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ProductoBtnTxt.setText("PRODUCTOS");
-        ProductoBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ProductoBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ProductoBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ProductoBtnTxtMouseExited(evt);
-            }
-        });
+        BtnInforme.setBackground(new java.awt.Color(144, 153, 162));
+        BtnInforme.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        BtnInforme.setForeground(new java.awt.Color(255, 255, 255));
+        BtnInforme.setText("INFORME");
+        background.add(BtnInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 180, 40));
 
-        javax.swing.GroupLayout ProductoBtnLayout = new javax.swing.GroupLayout(ProductoBtn);
-        ProductoBtn.setLayout(ProductoBtnLayout);
-        ProductoBtnLayout.setHorizontalGroup(
-            ProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-            .addGroup(ProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ProductoBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ProductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        ProductoBtnLayout.setVerticalGroup(
-            ProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(ProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ProductoBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ProductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        BtnProducto.setBackground(new java.awt.Color(144, 153, 162));
+        BtnProducto.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        BtnProducto.setForeground(new java.awt.Color(255, 255, 255));
+        BtnProducto.setText("PRODUCTOS");
+        background.add(BtnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 180, 40));
 
-        background.add(ProductoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 180, 40));
-
-        AgregarBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        AgregarBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        AgregarBtnTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        AgregarBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        AgregarBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AgregarBtnTxt.setText("CLIENTE");
-        AgregarBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AgregarBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AgregarBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AgregarBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout AgregarBtnLayout = new javax.swing.GroupLayout(AgregarBtn);
-        AgregarBtn.setLayout(AgregarBtnLayout);
-        AgregarBtnLayout.setHorizontalGroup(
-            AgregarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-            .addGroup(AgregarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(AgregarBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(AgregarBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        AgregarBtnLayout.setVerticalGroup(
-            AgregarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(AgregarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(AgregarBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(AgregarBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        background.add(AgregarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 180, 40));
-
-        CotizarBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        CotizarBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        CotizarBtnTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        CotizarBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        CotizarBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CotizarBtnTxt.setText("COTIZAR");
-        CotizarBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CotizarBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                CotizarBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                CotizarBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout CotizarBtnLayout = new javax.swing.GroupLayout(CotizarBtn);
-        CotizarBtn.setLayout(CotizarBtnLayout);
-        CotizarBtnLayout.setHorizontalGroup(
-            CotizarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-            .addGroup(CotizarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(CotizarBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(CotizarBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        CotizarBtnLayout.setVerticalGroup(
-            CotizarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(CotizarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(CotizarBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(CotizarBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        background.add(CotizarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, 180, 40));
+        BtnCotizar.setBackground(new java.awt.Color(144, 153, 162));
+        BtnCotizar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        BtnCotizar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnCotizar.setText("COTIZAR");
+        background.add(BtnCotizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 180, 40));
 
         TablaGeneralTpb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TablaGeneralTpb.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -411,75 +266,6 @@ public class Princpal extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(5).setPreferredWidth(30);
         }
 
-        EliminarBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        EliminarBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        EliminarBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        EliminarBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        EliminarBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        EliminarBtnTxt.setText("ELIMINAR");
-        EliminarBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EliminarBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                EliminarBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                EliminarBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout EliminarBtnLayout = new javax.swing.GroupLayout(EliminarBtn);
-        EliminarBtn.setLayout(EliminarBtnLayout);
-        EliminarBtnLayout.setHorizontalGroup(
-            EliminarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(EliminarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(EliminarBtnLayout.createSequentialGroup()
-                    .addComponent(EliminarBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        EliminarBtnLayout.setVerticalGroup(
-            EliminarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(EliminarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(EliminarBtnLayout.createSequentialGroup()
-                    .addComponent(EliminarBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-
-        GenerarBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        GenerarBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        GenerarBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        GenerarBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        GenerarBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        GenerarBtnTxt.setText("GENERAR");
-        GenerarBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        GenerarBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                GenerarBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                GenerarBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout GenerarBtnLayout = new javax.swing.GroupLayout(GenerarBtn);
-        GenerarBtn.setLayout(GenerarBtnLayout);
-        GenerarBtnLayout.setHorizontalGroup(
-            GenerarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GenerarBtnLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(GenerarBtnTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        GenerarBtnLayout.setVerticalGroup(
-            GenerarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GenerarBtnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(GenerarBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         RutClienteCotizarTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         RutClienteCotizarTxt.setForeground(new java.awt.Color(153, 153, 153));
         RutClienteCotizarTxt.setText("Rut Cliente");
@@ -499,6 +285,22 @@ public class Princpal extends javax.swing.JFrame {
 
         TotalLbl.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TotalLbl.setText("------");
+
+        btnGenerarCotizar.setBackground(new java.awt.Color(144, 153, 162));
+        btnGenerarCotizar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        btnGenerarCotizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarCotizar.setText("GENERAR");
+        btnGenerarCotizar.setBorderPainted(false);
+        btnGenerarCotizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarCotizarActionPerformed(evt);
+            }
+        });
+
+        BtnEliminarCotizar.setBackground(new java.awt.Color(144, 153, 162));
+        BtnEliminarCotizar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnEliminarCotizar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnEliminarCotizar.setText("ELIMINAR");
 
         javax.swing.GroupLayout CotizarTpbLayout = new javax.swing.GroupLayout(CotizarTpb);
         CotizarTpb.setLayout(CotizarTpbLayout);
@@ -525,15 +327,15 @@ public class Princpal extends javax.swing.JFrame {
                         .addComponent(CantidadCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CotizarTpbLayout.createSequentialGroup()
                         .addComponent(RutClienteCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
-                        .addComponent(GenerarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EliminarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnGenerarCotizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnEliminarCotizar)
+                        .addGap(94, 94, 94)
                         .addComponent(TotalCotizarTxt)
                         .addGap(18, 18, 18)
                         .addComponent(TotalLbl)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CotizarTpbLayout.setVerticalGroup(
             CotizarTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,18 +348,18 @@ public class Princpal extends javax.swing.JFrame {
                     .addComponent(PrecioCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CategoriaCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CantidadCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CotizarTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CotizarTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(GenerarBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(CotizarTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(TotalLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TotalCotizarTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EliminarBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(RutClienteCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9))
+                    .addGroup(CotizarTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(TotalLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                        .addComponent(TotalCotizarTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(CotizarTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(RutClienteCotizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGenerarCotizar)
+                        .addComponent(BtnEliminarCotizar)))
+                .addGap(10, 10, 10))
         );
 
         TablaGeneralTpb.addTab("Cotizar", CotizarTpb);
@@ -569,58 +371,63 @@ public class Princpal extends javax.swing.JFrame {
             }
         });
 
-        RutClienteTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        RutClienteTxt.setForeground(new java.awt.Color(153, 153, 153));
-        RutClienteTxt.setText("Rut sin Guion");
-        RutClienteTxt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        RutClienteTxt.setSelectionColor(new java.awt.Color(153, 153, 153));
-        RutClienteTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtRutCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtRutCliente.setForeground(new java.awt.Color(153, 153, 153));
+        TxtRutCliente.setText("Rut sin Guion");
+        TxtRutCliente.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxtRutCliente.setSelectionColor(new java.awt.Color(153, 153, 153));
+        TxtRutCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                RutClienteTxtMousePressed(evt);
+                TxtRutClienteMousePressed(evt);
+            }
+        });
+        TxtRutCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtRutClienteActionPerformed(evt);
             }
         });
 
-        NombreClienteTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        NombreClienteTxt.setForeground(new java.awt.Color(153, 153, 153));
-        NombreClienteTxt.setText("Nombre");
-        NombreClienteTxt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        NombreClienteTxt.setSelectionColor(new java.awt.Color(153, 153, 153));
-        NombreClienteTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtNombreCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtNombreCliente.setForeground(new java.awt.Color(153, 153, 153));
+        TxtNombreCliente.setText("Nombre");
+        TxtNombreCliente.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxtNombreCliente.setSelectionColor(new java.awt.Color(153, 153, 153));
+        TxtNombreCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                NombreClienteTxtMousePressed(evt);
+                TxtNombreClienteMousePressed(evt);
             }
         });
 
-        TelefonoTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        TelefonoTxt.setForeground(new java.awt.Color(153, 153, 153));
-        TelefonoTxt.setText("Telefono");
-        TelefonoTxt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        TelefonoTxt.setSelectionColor(new java.awt.Color(153, 153, 153));
-        TelefonoTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtTelefonoCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtTelefonoCliente.setForeground(new java.awt.Color(153, 153, 153));
+        TxtTelefonoCliente.setText("Telefono");
+        TxtTelefonoCliente.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxtTelefonoCliente.setSelectionColor(new java.awt.Color(153, 153, 153));
+        TxtTelefonoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                TelefonoTxtMousePressed(evt);
+                TxtTelefonoClienteMousePressed(evt);
             }
         });
 
-        RazonSocialTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        RazonSocialTxt.setForeground(new java.awt.Color(153, 153, 153));
-        RazonSocialTxt.setText("Razon Social");
-        RazonSocialTxt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        RazonSocialTxt.setSelectionColor(new java.awt.Color(153, 153, 153));
-        RazonSocialTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtRazonSocialCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtRazonSocialCliente.setForeground(new java.awt.Color(153, 153, 153));
+        TxtRazonSocialCliente.setText("Razon Social");
+        TxtRazonSocialCliente.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxtRazonSocialCliente.setSelectionColor(new java.awt.Color(153, 153, 153));
+        TxtRazonSocialCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                RazonSocialTxtMousePressed(evt);
+                TxtRazonSocialClienteMousePressed(evt);
             }
         });
 
-        DireccionTxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        DireccionTxt.setForeground(new java.awt.Color(153, 153, 153));
-        DireccionTxt.setText("Direccion");
-        DireccionTxt.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        DireccionTxt.setSelectionColor(new java.awt.Color(153, 153, 153));
-        DireccionTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtDireccionCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtDireccionCliente.setForeground(new java.awt.Color(153, 153, 153));
+        TxtDireccionCliente.setText("Direccion");
+        TxtDireccionCliente.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxtDireccionCliente.setSelectionColor(new java.awt.Color(153, 153, 153));
+        TxtDireccionCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                DireccionTxtMousePressed(evt);
+                TxtDireccionClienteMousePressed(evt);
             }
         });
 
@@ -643,202 +450,79 @@ public class Princpal extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(4).setPreferredWidth(80);
         }
 
-        AgregarClienteBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        AgregarClienteBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        AgregarClienteBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        AgregarClienteBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        AgregarClienteBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AgregarClienteBtnTxt.setText("AGREGAR");
-        AgregarClienteBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AgregarClienteBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AgregarClienteBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AgregarClienteBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout AgregarClienteBtnLayout = new javax.swing.GroupLayout(AgregarClienteBtn);
-        AgregarClienteBtn.setLayout(AgregarClienteBtnLayout);
-        AgregarClienteBtnLayout.setHorizontalGroup(
-            AgregarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
-            .addGroup(AgregarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(AgregarClienteBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(AgregarClienteBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        AgregarClienteBtnLayout.setVerticalGroup(
-            AgregarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-            .addGroup(AgregarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(AgregarClienteBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(AgregarClienteBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        ActualizarClienteBtn.setBackground(new java.awt.Color(144, 153, 162));
-        ActualizarClienteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActualizarClienteBtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActualizarClienteBtnMouseExited(evt);
-            }
-        });
-
-        ActualizarClienteBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        ActualizarClienteBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        ActualizarClienteBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        ActualizarClienteBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ActualizarClienteBtnTxt.setText("ACTUALIZAR");
-        ActualizarClienteBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ActualizarClienteBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActualizarClienteBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActualizarClienteBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout ActualizarClienteBtnLayout = new javax.swing.GroupLayout(ActualizarClienteBtn);
-        ActualizarClienteBtn.setLayout(ActualizarClienteBtnLayout);
-        ActualizarClienteBtnLayout.setHorizontalGroup(
-            ActualizarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ActualizarClienteBtnTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-        );
-        ActualizarClienteBtnLayout.setVerticalGroup(
-            ActualizarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizarClienteBtnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ActualizarClienteBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        NuevoClienteBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        NuevoClienteBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        NuevoClienteBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        NuevoClienteBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        NuevoClienteBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NuevoClienteBtnTxt.setText("NUEVO");
-        NuevoClienteBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        NuevoClienteBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                NuevoClienteBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                NuevoClienteBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout NuevoClienteBtnLayout = new javax.swing.GroupLayout(NuevoClienteBtn);
-        NuevoClienteBtn.setLayout(NuevoClienteBtnLayout);
-        NuevoClienteBtnLayout.setHorizontalGroup(
-            NuevoClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
-            .addGroup(NuevoClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(NuevoClienteBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(NuevoClienteBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        NuevoClienteBtnLayout.setVerticalGroup(
-            NuevoClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-            .addGroup(NuevoClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(NuevoClienteBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(NuevoClienteBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        EliminarClienteBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        EliminarClienteBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        EliminarClienteBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        EliminarClienteBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        EliminarClienteBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        EliminarClienteBtnTxt.setText("ELIMINAR");
-        EliminarClienteBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EliminarClienteBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                EliminarClienteBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                EliminarClienteBtnTxtMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout EliminarClienteBtnLayout = new javax.swing.GroupLayout(EliminarClienteBtn);
-        EliminarClienteBtn.setLayout(EliminarClienteBtnLayout);
-        EliminarClienteBtnLayout.setHorizontalGroup(
-            EliminarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
-            .addGroup(EliminarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(EliminarClienteBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(EliminarClienteBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        EliminarClienteBtnLayout.setVerticalGroup(
-            EliminarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-            .addGroup(EliminarClienteBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(EliminarClienteBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(EliminarClienteBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        DvTxt.setForeground(new java.awt.Color(153, 153, 153));
-        DvTxt.setText("Dv");
-        DvTxt.setSelectionColor(new java.awt.Color(153, 153, 153));
-        DvTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtDvCliente.setForeground(new java.awt.Color(153, 153, 153));
+        TxtDvCliente.setText("Dv");
+        TxtDvCliente.setSelectionColor(new java.awt.Color(153, 153, 153));
+        TxtDvCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                DvTxtMousePressed(evt);
+                TxtDvClienteMousePressed(evt);
             }
         });
-        DvTxt.addActionListener(new java.awt.event.ActionListener() {
+        TxtDvCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DvTxtActionPerformed(evt);
+                TxtDvClienteActionPerformed(evt);
             }
         });
+
+        BtnEliminarCliente.setBackground(new java.awt.Color(144, 153, 162));
+        BtnEliminarCliente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnEliminarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        BtnEliminarCliente.setText("ELIMINAR");
+        BtnEliminarCliente.setBorderPainted(false);
+
+        BtnAgregarCliente.setBackground(new java.awt.Color(144, 153, 162));
+        BtnAgregarCliente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnAgregarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        BtnAgregarCliente.setText("AGREGAR");
+        BtnAgregarCliente.setBorderPainted(false);
+        BtnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarClienteActionPerformed(evt);
+            }
+        });
+
+        BtnActualizarCliente.setBackground(new java.awt.Color(144, 153, 162));
+        BtnActualizarCliente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnActualizarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        BtnActualizarCliente.setText("ACTUALIZAR");
+        BtnActualizarCliente.setBorderPainted(false);
+
+        BtnNuevoCliente.setBackground(new java.awt.Color(144, 153, 162));
+        BtnNuevoCliente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnNuevoCliente.setForeground(new java.awt.Color(255, 255, 255));
+        BtnNuevoCliente.setText("NUEVO");
+        BtnNuevoCliente.setBorderPainted(false);
+        BtnNuevoCliente.setPreferredSize(new java.awt.Dimension(87, 21));
 
         javax.swing.GroupLayout ClienteTpbLayout = new javax.swing.GroupLayout(ClienteTpb);
         ClienteTpb.setLayout(ClienteTpbLayout);
         ClienteTpbLayout.setHorizontalGroup(
             ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ClienteScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
             .addGroup(ClienteTpbLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ClienteTpbLayout.createSequentialGroup()
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NombreClienteTxt)
-                            .addComponent(RazonSocialTxt))
+                            .addComponent(TxtNombreCliente)
+                            .addComponent(TxtRazonSocialCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TelefonoTxt)
-                            .addComponent(DireccionTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                        .addGap(49, 49, 49))
+                            .addComponent(TxtTelefonoCliente)
+                            .addComponent(TxtDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
                     .addGroup(ClienteTpbLayout.createSequentialGroup()
-                        .addComponent(RutClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtRutCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DvTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ActualizarClienteBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NuevoClienteBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EliminarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgregarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
+                        .addComponent(TxtDvCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BtnActualizarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnNuevoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BtnAgregarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
+            .addComponent(ClienteScrollPanel)
         );
         ClienteTpbLayout.setVerticalGroup(
             ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -848,26 +532,26 @@ public class Princpal extends javax.swing.JFrame {
                     .addGroup(ClienteTpbLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RutClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DvTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtRutCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtDvCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DireccionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NombreClienteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RazonSocialTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TelefonoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtRazonSocialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienteTpbLayout.createSequentialGroup()
+                    .addGroup(ClienteTpbLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(AgregarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ActualizarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(NuevoClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EliminarClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BtnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(BtnActualizarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(22, 22, 22))))
         );
 
@@ -944,149 +628,53 @@ public class Princpal extends javax.swing.JFrame {
             }
         });
 
-        AgregarPorductoBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        AgregarPorductoBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        AgregarPorductoBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        AgregarPorductoBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        AgregarPorductoBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AgregarPorductoBtnTxt.setText("AGREGAR");
-        AgregarPorductoBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AgregarPorductoBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AgregarPorductoBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AgregarPorductoBtnTxtMouseExited(evt);
+        BtnActualizarProducto.setBackground(new java.awt.Color(144, 153, 162));
+        BtnActualizarProducto.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnActualizarProducto.setForeground(new java.awt.Color(255, 255, 255));
+        BtnActualizarProducto.setText("ACTUALIZAR");
+        BtnActualizarProducto.setBorderPainted(false);
+        BtnActualizarProducto.setPreferredSize(new java.awt.Dimension(87, 21));
+        BtnActualizarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnActualizarProductoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout AgregarPorductoBtnLayout = new javax.swing.GroupLayout(AgregarPorductoBtn);
-        AgregarPorductoBtn.setLayout(AgregarPorductoBtnLayout);
-        AgregarPorductoBtnLayout.setHorizontalGroup(
-            AgregarPorductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
-            .addGroup(AgregarPorductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(AgregarPorductoBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(AgregarPorductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        AgregarPorductoBtnLayout.setVerticalGroup(
-            AgregarPorductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-            .addGroup(AgregarPorductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(AgregarPorductoBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(AgregarPorductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        ActualizarPorductoBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        ActualizarProductoBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        ActualizarProductoBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        ActualizarProductoBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        ActualizarProductoBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ActualizarProductoBtnTxt.setText("ACTUALIZAR");
-        ActualizarProductoBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ActualizarProductoBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActualizarProductoBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActualizarProductoBtnTxtMouseExited(evt);
+        BtnEliminarProducto.setBackground(new java.awt.Color(144, 153, 162));
+        BtnEliminarProducto.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnEliminarProducto.setForeground(new java.awt.Color(255, 255, 255));
+        BtnEliminarProducto.setText("ELIMINAR");
+        BtnEliminarProducto.setBorderPainted(false);
+        BtnEliminarProducto.setPreferredSize(new java.awt.Dimension(87, 21));
+        BtnEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarProductoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout ActualizarPorductoBtnLayout = new javax.swing.GroupLayout(ActualizarPorductoBtn);
-        ActualizarPorductoBtn.setLayout(ActualizarPorductoBtnLayout);
-        ActualizarPorductoBtnLayout.setHorizontalGroup(
-            ActualizarPorductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ActualizarProductoBtnTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-        );
-        ActualizarPorductoBtnLayout.setVerticalGroup(
-            ActualizarPorductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizarPorductoBtnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ActualizarProductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        NuevoProductoBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        NuevoProductoBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        NuevoProductoBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        NuevoProductoBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        NuevoProductoBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NuevoProductoBtnTxt.setText("NUEVO");
-        NuevoProductoBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        NuevoProductoBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                NuevoProductoBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                NuevoProductoBtnTxtMouseExited(evt);
+        BtnNuevoProducto1.setBackground(new java.awt.Color(144, 153, 162));
+        BtnNuevoProducto1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnNuevoProducto1.setForeground(new java.awt.Color(255, 255, 255));
+        BtnNuevoProducto1.setText("NUEVO");
+        BtnNuevoProducto1.setBorderPainted(false);
+        BtnNuevoProducto1.setPreferredSize(new java.awt.Dimension(87, 21));
+        BtnNuevoProducto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoProducto1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout NuevoProductoBtnLayout = new javax.swing.GroupLayout(NuevoProductoBtn);
-        NuevoProductoBtn.setLayout(NuevoProductoBtnLayout);
-        NuevoProductoBtnLayout.setHorizontalGroup(
-            NuevoProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
-            .addGroup(NuevoProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(NuevoProductoBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(NuevoProductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        NuevoProductoBtnLayout.setVerticalGroup(
-            NuevoProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-            .addGroup(NuevoProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(NuevoProductoBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(NuevoProductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        EliminarProductoBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        EliminarProductoBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        EliminarProductoBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        EliminarProductoBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        EliminarProductoBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        EliminarProductoBtnTxt.setText("ELIMINAR");
-        EliminarProductoBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EliminarProductoBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                EliminarProductoBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                EliminarProductoBtnTxtMouseExited(evt);
+        BtnAgregarProducto1.setBackground(new java.awt.Color(144, 153, 162));
+        BtnAgregarProducto1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnAgregarProducto1.setForeground(new java.awt.Color(255, 255, 255));
+        BtnAgregarProducto1.setText("AGREGAR");
+        BtnAgregarProducto1.setBorderPainted(false);
+        BtnAgregarProducto1.setPreferredSize(new java.awt.Dimension(87, 21));
+        BtnAgregarProducto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarProducto1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout EliminarProductoBtnLayout = new javax.swing.GroupLayout(EliminarProductoBtn);
-        EliminarProductoBtn.setLayout(EliminarProductoBtnLayout);
-        EliminarProductoBtnLayout.setHorizontalGroup(
-            EliminarProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
-            .addGroup(EliminarProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(EliminarProductoBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(EliminarProductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        EliminarProductoBtnLayout.setVerticalGroup(
-            EliminarProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
-            .addGroup(EliminarProductoBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(EliminarProductoBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(EliminarProductoBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
 
         javax.swing.GroupLayout ProductosTpbLayout = new javax.swing.GroupLayout(ProductosTpb);
         ProductosTpb.setLayout(ProductosTpbLayout);
@@ -1094,20 +682,20 @@ public class Princpal extends javax.swing.JFrame {
             ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductosTpbLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ActualizarPorductoBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NuevoProductoBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BtnActualizarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNuevoProducto1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EliminarProductoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgregarPorductoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                    .addComponent(BtnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnAgregarProducto1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(NombrePorductoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                     .addComponent(MarcaPorductoTxt)
                     .addComponent(PrecioPorductoTxt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(CategoriaPorductoTxt)
                     .addComponent(CantidadPorductoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1130,13 +718,13 @@ public class Princpal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PrecioPorductoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ProductosTpbLayout.createSequentialGroup()
-                        .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(AgregarPorductoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ActualizarPorductoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(NuevoProductoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EliminarProductoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnActualizarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnAgregarProducto1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(ProductosTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnNuevoProducto1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 24, Short.MAX_VALUE))
         );
 
@@ -1161,39 +749,17 @@ public class Princpal extends javax.swing.JFrame {
             jTable4.getColumnModel().getColumn(2).setPreferredWidth(30);
         }
 
-        GenerarInformeBtn.setBackground(new java.awt.Color(144, 153, 162));
-
-        GenerarInformeBtnTxt.setBackground(new java.awt.Color(255, 255, 255));
-        GenerarInformeBtnTxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        GenerarInformeBtnTxt.setForeground(new java.awt.Color(255, 255, 255));
-        GenerarInformeBtnTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        GenerarInformeBtnTxt.setText("GENERAR INFORME");
-        GenerarInformeBtnTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        GenerarInformeBtnTxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                GenerarInformeBtnTxtMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                GenerarInformeBtnTxtMouseExited(evt);
+        BtnGenerarInforme.setBackground(new java.awt.Color(144, 153, 162));
+        BtnGenerarInforme.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        BtnGenerarInforme.setForeground(new java.awt.Color(255, 255, 255));
+        BtnGenerarInforme.setText("GENERAR INFORME");
+        BtnGenerarInforme.setBorderPainted(false);
+        BtnGenerarInforme.setPreferredSize(new java.awt.Dimension(87, 21));
+        BtnGenerarInforme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGenerarInformeActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout GenerarInformeBtnLayout = new javax.swing.GroupLayout(GenerarInformeBtn);
-        GenerarInformeBtn.setLayout(GenerarInformeBtnLayout);
-        GenerarInformeBtnLayout.setHorizontalGroup(
-            GenerarInformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 141, Short.MAX_VALUE)
-            .addGroup(GenerarInformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(GenerarInformeBtnLayout.createSequentialGroup()
-                    .addComponent(GenerarInformeBtnTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        GenerarInformeBtnLayout.setVerticalGroup(
-            GenerarInformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-            .addGroup(GenerarInformeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(GenerarInformeBtnTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout InformeTpbLayout = new javax.swing.GroupLayout(InformeTpb);
         InformeTpb.setLayout(InformeTpbLayout);
@@ -1201,17 +767,17 @@ public class Princpal extends javax.swing.JFrame {
             InformeTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
             .addGroup(InformeTpbLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(GenerarInformeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(BtnGenerarInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         InformeTpbLayout.setVerticalGroup(
             InformeTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InformeTpbLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(GenerarInformeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addComponent(BtnGenerarInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         TablaGeneralTpb.addTab("Informe", InformeTpb);
@@ -1266,47 +832,6 @@ public class Princpal extends javax.swing.JFrame {
         //permite que el color del boton se restaure al momento de dejar de pasar el mause sobre el
     }//GEN-LAST:event_exitTxtMouseExited
 
-    private void CotizarBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CotizarBtnTxtMouseEntered
-        CotizarBtn.setBackground(new Color(110, 122, 147));
-        // 144, 153, 162 color original
-        //codigo opara hacer que el boton cambie de color
-    }//GEN-LAST:event_CotizarBtnTxtMouseEntered
-
-    private void CotizarBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CotizarBtnTxtMouseExited
-        //devuele el color del boton al color original
-        CotizarBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_CotizarBtnTxtMouseExited
-
-    private void AgregarBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarBtnTxtMouseEntered
-        
-        AgregarBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_AgregarBtnTxtMouseEntered
-
-    private void AgregarBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarBtnTxtMouseExited
-        
-        AgregarBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_AgregarBtnTxtMouseExited
-
-    private void ProductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductoBtnTxtMouseEntered
-        
-        ProductoBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_ProductoBtnTxtMouseEntered
-
-    private void ProductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductoBtnTxtMouseExited
-        
-        ProductoBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_ProductoBtnTxtMouseExited
-
-    private void InformeBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InformeBtnTxtMouseEntered
-        
-        InformeBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_InformeBtnTxtMouseEntered
-
-    private void InformeBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InformeBtnTxtMouseExited
-        
-        InformeBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_InformeBtnTxtMouseExited
-
     private void IdCotizarTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdCotizarTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IdCotizarTxtActionPerformed
@@ -1315,310 +840,189 @@ public class Princpal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreCotizarTxtActionPerformed
 
-    private void EliminarBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarBtnTxtMouseEntered
-        
-        EliminarBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_EliminarBtnTxtMouseEntered
-
-    private void EliminarBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarBtnTxtMouseExited
-        // TODO add your handling code here:
-        
-        EliminarBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_EliminarBtnTxtMouseExited
-
-    private void GenerarBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerarBtnTxtMouseEntered
-        
-        GenerarBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_GenerarBtnTxtMouseEntered
-
-    private void GenerarBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerarBtnTxtMouseExited
-        
-        GenerarBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_GenerarBtnTxtMouseExited
-
     private void RutClienteCotizarTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RutClienteCotizarTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RutClienteCotizarTxtActionPerformed
 
-    private void EliminarClienteBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarClienteBtnTxtMouseExited
-        // TODO add your handling code here:
-        EliminarClienteBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_EliminarClienteBtnTxtMouseExited
-
-    private void EliminarClienteBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarClienteBtnTxtMouseEntered
-        // TODO add your handling code here:
-        EliminarClienteBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_EliminarClienteBtnTxtMouseEntered
-
-    private void NuevoClienteBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoClienteBtnTxtMouseExited
-        // TODO add your handling code here:
-        
-        NuevoClienteBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_NuevoClienteBtnTxtMouseExited
-
-    private void NuevoClienteBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoClienteBtnTxtMouseEntered
-        // TODO add your handling code here:
-        NuevoClienteBtn.setBackground(new Color(110, 122, 147));
-        
-    }//GEN-LAST:event_NuevoClienteBtnTxtMouseEntered
-
-    private void ActualizarClienteBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarClienteBtnTxtMouseExited
-        // TODO add your handling code here:
-        
-        ActualizarClienteBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_ActualizarClienteBtnTxtMouseExited
-
-    private void ActualizarClienteBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarClienteBtnTxtMouseEntered
-        // TODO add your handling code here:
-        ActualizarClienteBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_ActualizarClienteBtnTxtMouseEntered
-
-    private void AgregarClienteBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarClienteBtnTxtMouseExited
-        // TODO add your handling code here:
-        AgregarClienteBtn.setBackground(new Color(144, 153, 162));
-        
-    }//GEN-LAST:event_AgregarClienteBtnTxtMouseExited
-
-    private void AgregarClienteBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarClienteBtnTxtMouseEntered
-        // TODO add your handling code here:
-        AgregarClienteBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_AgregarClienteBtnTxtMouseEntered
-
-    private void NombreClienteTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreClienteTxtMousePressed
+    private void TxtNombreClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtNombreClienteMousePressed
         //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
-        if (NombreClienteTxt.getText().equals("Nombre")) {
-            NombreClienteTxt.setText("");
-            NombreClienteTxt.setForeground(Color.black);
+        if (TxtNombreCliente.getText().equals("Nombre")) {
+            TxtNombreCliente.setText("");
+            TxtNombreCliente.setForeground(Color.black);
         }
-        if (RutClienteTxt.getText().isEmpty()) {
-            RutClienteTxt.setText("Rut sin Guion");
-            RutClienteTxt.setForeground(Color.gray);
+        if (TxtRutCliente.getText().isEmpty()) {
+            TxtRutCliente.setText("Rut sin Guion");
+            TxtRutCliente.setForeground(Color.gray);
         }
-        if (RazonSocialTxt.getText().isEmpty()) {
-            RazonSocialTxt.setText("Razon Social");
-            RazonSocialTxt.setForeground(Color.gray);
+        if (TxtRazonSocialCliente.getText().isEmpty()) {
+            TxtRazonSocialCliente.setText("Razon Social");
+            TxtRazonSocialCliente.setForeground(Color.gray);
         }
-        if (DireccionTxt.getText().isEmpty()) {
-            DireccionTxt.setText("Direccion");
-            DireccionTxt.setForeground(Color.gray);
+        if (TxtDireccionCliente.getText().isEmpty()) {
+            TxtDireccionCliente.setText("Direccion");
+            TxtDireccionCliente.setForeground(Color.gray);
         }
-        if (DvTxt.getText().isEmpty()) {
-            DvTxt.setText("Dv");
-            DvTxt.setForeground(Color.gray);
+        if (TxtDvCliente.getText().isEmpty()) {
+            TxtDvCliente.setText("Dv");
+            TxtDvCliente.setForeground(Color.gray);
         }
-        if (TelefonoTxt.getText().isEmpty()) {
-            TelefonoTxt.setText("Telefono");
-            TelefonoTxt.setForeground(Color.gray);
+        if (TxtTelefonoCliente.getText().isEmpty()) {
+            TxtTelefonoCliente.setText("Telefono");
+            TxtTelefonoCliente.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_NombreClienteTxtMousePressed
+    }//GEN-LAST:event_TxtNombreClienteMousePressed
 
-    private void RutClienteTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RutClienteTxtMousePressed
+    private void TxtRutClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtRutClienteMousePressed
         //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
-        if (RutClienteTxt.getText().equals("Rut sin Guion")) {
-            RutClienteTxt.setText("");
-            RutClienteTxt.setForeground(Color.black);
+        if (TxtRutCliente.getText().equals("Rut sin Guion")) {
+            TxtRutCliente.setText("");
+            TxtRutCliente.setForeground(Color.black);
         }
-        if (NombreClienteTxt.getText().isEmpty()) {
-            NombreClienteTxt.setText("Nombre");
-            NombreClienteTxt.setForeground(Color.gray);
+        if (TxtNombreCliente.getText().isEmpty()) {
+            TxtNombreCliente.setText("Nombre");
+            TxtNombreCliente.setForeground(Color.gray);
         }
-        if (RazonSocialTxt.getText().isEmpty()) {
-            RazonSocialTxt.setText("Razon Social");
-            RazonSocialTxt.setForeground(Color.gray);
+        if (TxtRazonSocialCliente.getText().isEmpty()) {
+            TxtRazonSocialCliente.setText("Razon Social");
+            TxtRazonSocialCliente.setForeground(Color.gray);
         }
-        if (DireccionTxt.getText().isEmpty()) {
-            DireccionTxt.setText("Direccion");
-            DireccionTxt.setForeground(Color.gray);
+        if (TxtDireccionCliente.getText().isEmpty()) {
+            TxtDireccionCliente.setText("Direccion");
+            TxtDireccionCliente.setForeground(Color.gray);
         }
-        if (DvTxt.getText().isEmpty()) {
-            DvTxt.setText("Dv");
-            DvTxt.setForeground(Color.gray);
+        if (TxtDvCliente.getText().isEmpty()) {
+            TxtDvCliente.setText("Dv");
+            TxtDvCliente.setForeground(Color.gray);
         }
-        if (TelefonoTxt.getText().isEmpty()) {
-            TelefonoTxt.setText("Telefono");
-            TelefonoTxt.setForeground(Color.gray);
+        if (TxtTelefonoCliente.getText().isEmpty()) {
+            TxtTelefonoCliente.setText("Telefono");
+            TxtTelefonoCliente.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_RutClienteTxtMousePressed
+    }//GEN-LAST:event_TxtRutClienteMousePressed
 
-    private void RazonSocialTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RazonSocialTxtMousePressed
+    private void TxtRazonSocialClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtRazonSocialClienteMousePressed
         //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
-        if (RazonSocialTxt.getText().equals("Razon Social")) {
-            RazonSocialTxt.setText("");
-            RazonSocialTxt.setForeground(Color.black);
+        if (TxtRazonSocialCliente.getText().equals("Razon Social")) {
+            TxtRazonSocialCliente.setText("");
+            TxtRazonSocialCliente.setForeground(Color.black);
         }
-        if (RutClienteTxt.getText().isEmpty()) {
-            RutClienteTxt.setText("Rut sin Guion");
-            RutClienteTxt.setForeground(Color.gray);
+        if (TxtRutCliente.getText().isEmpty()) {
+            TxtRutCliente.setText("Rut sin Guion");
+            TxtRutCliente.setForeground(Color.gray);
         }
-        if (NombreClienteTxt.getText().isEmpty()) {
-            NombreClienteTxt.setText("Nombre");
-            NombreClienteTxt.setForeground(Color.gray);
+        if (TxtNombreCliente.getText().isEmpty()) {
+            TxtNombreCliente.setText("Nombre");
+            TxtNombreCliente.setForeground(Color.gray);
         }
-        if (DireccionTxt.getText().isEmpty()) {
-            DireccionTxt.setText("Direccion");
-            DireccionTxt.setForeground(Color.gray);
+        if (TxtDireccionCliente.getText().isEmpty()) {
+            TxtDireccionCliente.setText("Direccion");
+            TxtDireccionCliente.setForeground(Color.gray);
         }
-        if (DvTxt.getText().isEmpty()) {
-            DvTxt.setText("Dv");
-            DvTxt.setForeground(Color.gray);
+        if (TxtDvCliente.getText().isEmpty()) {
+            TxtDvCliente.setText("Dv");
+            TxtDvCliente.setForeground(Color.gray);
         }
-        if (TelefonoTxt.getText().isEmpty()) {
-            TelefonoTxt.setText("Telefono");
-            TelefonoTxt.setForeground(Color.gray);
+        if (TxtTelefonoCliente.getText().isEmpty()) {
+            TxtTelefonoCliente.setText("Telefono");
+            TxtTelefonoCliente.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_RazonSocialTxtMousePressed
+    }//GEN-LAST:event_TxtRazonSocialClienteMousePressed
 
-    private void DireccionTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DireccionTxtMousePressed
+    private void TxtDireccionClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtDireccionClienteMousePressed
         //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
-        if (DireccionTxt.getText().equals("Direccion")) {
-            DireccionTxt.setText("");
-            DireccionTxt.setForeground(Color.black);
+        if (TxtDireccionCliente.getText().equals("Direccion")) {
+            TxtDireccionCliente.setText("");
+            TxtDireccionCliente.setForeground(Color.black);
         }
-        if (RutClienteTxt.getText().isEmpty()) {
-            RutClienteTxt.setText("Rut sin Guion");
-            RutClienteTxt.setForeground(Color.gray);
+        if (TxtRutCliente.getText().isEmpty()) {
+            TxtRutCliente.setText("Rut sin Guion");
+            TxtRutCliente.setForeground(Color.gray);
         }
-        if (RazonSocialTxt.getText().isEmpty()) {
-            RazonSocialTxt.setText("Razon Social");
-            RazonSocialTxt.setForeground(Color.gray);
+        if (TxtRazonSocialCliente.getText().isEmpty()) {
+            TxtRazonSocialCliente.setText("Razon Social");
+            TxtRazonSocialCliente.setForeground(Color.gray);
         }
-        if (NombreClienteTxt.getText().isEmpty()) {
-            NombreClienteTxt.setText("Nombre");
-            NombreClienteTxt.setForeground(Color.gray);
+        if (TxtNombreCliente.getText().isEmpty()) {
+            TxtNombreCliente.setText("Nombre");
+            TxtNombreCliente.setForeground(Color.gray);
         }
-        if (DvTxt.getText().isEmpty()) {
-            DvTxt.setText("Dv");
-            DvTxt.setForeground(Color.gray);
+        if (TxtDvCliente.getText().isEmpty()) {
+            TxtDvCliente.setText("Dv");
+            TxtDvCliente.setForeground(Color.gray);
         }
-        if (TelefonoTxt.getText().isEmpty()) {
-            TelefonoTxt.setText("Telefono");
-            TelefonoTxt.setForeground(Color.gray);
+        if (TxtTelefonoCliente.getText().isEmpty()) {
+            TxtTelefonoCliente.setText("Telefono");
+            TxtTelefonoCliente.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_DireccionTxtMousePressed
+    }//GEN-LAST:event_TxtDireccionClienteMousePressed
 
     private void ClienteTpbMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClienteTpbMousePressed
 
     }//GEN-LAST:event_ClienteTpbMousePressed
 
-    private void DvTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DvTxtMousePressed
+    private void TxtDvClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtDvClienteMousePressed
         //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
-        if (DvTxt.getText().equals("Dv")) {
-            DvTxt.setText("");
-            DvTxt.setForeground(Color.black);
+        if (TxtDvCliente.getText().equals("Dv")) {
+            TxtDvCliente.setText("");
+            TxtDvCliente.setForeground(Color.black);
         }
-        if (RutClienteTxt.getText().isEmpty()) {
-            RutClienteTxt.setText("Rut sin Guion");
-            RutClienteTxt.setForeground(Color.gray);
+        if (TxtRutCliente.getText().isEmpty()) {
+            TxtRutCliente.setText("Rut sin Guion");
+            TxtRutCliente.setForeground(Color.gray);
         }
-        if (RazonSocialTxt.getText().isEmpty()) {
-            RazonSocialTxt.setText("Razon Social");
-            RazonSocialTxt.setForeground(Color.gray);
+        if (TxtRazonSocialCliente.getText().isEmpty()) {
+            TxtRazonSocialCliente.setText("Razon Social");
+            TxtRazonSocialCliente.setForeground(Color.gray);
         }
-        if (DireccionTxt.getText().isEmpty()) {
-            DireccionTxt.setText("Direccion");
-            DireccionTxt.setForeground(Color.gray);
+        if (TxtDireccionCliente.getText().isEmpty()) {
+            TxtDireccionCliente.setText("Direccion");
+            TxtDireccionCliente.setForeground(Color.gray);
         }
-        if (NombreClienteTxt.getText().isEmpty()) {
-            NombreClienteTxt.setText("Nombre");
-            NombreClienteTxt.setForeground(Color.gray);
+        if (TxtNombreCliente.getText().isEmpty()) {
+            TxtNombreCliente.setText("Nombre");
+            TxtNombreCliente.setForeground(Color.gray);
         }
-        if (TelefonoTxt.getText().isEmpty()) {
-            TelefonoTxt.setText("Telefono");
-            TelefonoTxt.setForeground(Color.gray);
+        if (TxtTelefonoCliente.getText().isEmpty()) {
+            TxtTelefonoCliente.setText("Telefono");
+            TxtTelefonoCliente.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_DvTxtMousePressed
+    }//GEN-LAST:event_TxtDvClienteMousePressed
 
-    private void DvTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DvTxtActionPerformed
+    private void TxtDvClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtDvClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DvTxtActionPerformed
+    }//GEN-LAST:event_TxtDvClienteActionPerformed
 
-    private void TelefonoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelefonoTxtMousePressed
+    private void TxtTelefonoClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtTelefonoClienteMousePressed
         //Permite que el texto dentro del jTexfield vuelva al texto original si los demas campos estan vacios
-        if (TelefonoTxt.getText().equals("Telefono")) {
-            TelefonoTxt.setText("");
-            TelefonoTxt.setForeground(Color.black);
+        if (TxtTelefonoCliente.getText().equals("Telefono")) {
+            TxtTelefonoCliente.setText("");
+            TxtTelefonoCliente.setForeground(Color.black);
         }
-        if (RutClienteTxt.getText().isEmpty()) {
-            RutClienteTxt.setText("Rut sin Guion");
-            RutClienteTxt.setForeground(Color.gray);
+        if (TxtRutCliente.getText().isEmpty()) {
+            TxtRutCliente.setText("Rut sin Guion");
+            TxtRutCliente.setForeground(Color.gray);
         }
-        if (RazonSocialTxt.getText().isEmpty()) {
-            RazonSocialTxt.setText("Razon Social");
-            RazonSocialTxt.setForeground(Color.gray);
+        if (TxtRazonSocialCliente.getText().isEmpty()) {
+            TxtRazonSocialCliente.setText("Razon Social");
+            TxtRazonSocialCliente.setForeground(Color.gray);
         }
-        if (DireccionTxt.getText().isEmpty()) {
-            DireccionTxt.setText("Direccion");
-            DireccionTxt.setForeground(Color.gray);
+        if (TxtDireccionCliente.getText().isEmpty()) {
+            TxtDireccionCliente.setText("Direccion");
+            TxtDireccionCliente.setForeground(Color.gray);
         }
-        if (DvTxt.getText().isEmpty()) {
-            DvTxt.setText("Dv");
-            DvTxt.setForeground(Color.gray);
+        if (TxtDvCliente.getText().isEmpty()) {
+            TxtDvCliente.setText("Dv");
+            TxtDvCliente.setForeground(Color.gray);
         }
-        if (NombreClienteTxt.getText().isEmpty()) {
-            NombreClienteTxt.setText("Nombre");
-            NombreClienteTxt.setForeground(Color.gray);
+        if (TxtNombreCliente.getText().isEmpty()) {
+            TxtNombreCliente.setText("Nombre");
+            TxtNombreCliente.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_TelefonoTxtMousePressed
+    }//GEN-LAST:event_TxtTelefonoClienteMousePressed
 
     private void NombrePorductoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombrePorductoTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NombrePorductoTxtActionPerformed
-
-    private void AgregarPorductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarPorductoBtnTxtMouseEntered
-        // TODO add your handling code here:
-        AgregarPorductoBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_AgregarPorductoBtnTxtMouseEntered
-
-    private void AgregarPorductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarPorductoBtnTxtMouseExited
-        // TODO add your handling code here:
-        
-        AgregarPorductoBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_AgregarPorductoBtnTxtMouseExited
-
-    private void ActualizarProductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarProductoBtnTxtMouseEntered
-        // TODO add your handling code here:
-        ActualizarPorductoBtn.setBackground(new Color(110, 122, 147));
-        
-    }//GEN-LAST:event_ActualizarProductoBtnTxtMouseEntered
-
-    private void ActualizarProductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarProductoBtnTxtMouseExited
-        // TODO add your handling code here:
-        
-        ActualizarPorductoBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_ActualizarProductoBtnTxtMouseExited
-
-    private void NuevoProductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoProductoBtnTxtMouseEntered
-        // TODO add your handling code here:
-        NuevoProductoBtn.setBackground(new Color(110, 122, 147));
-        
-    }//GEN-LAST:event_NuevoProductoBtnTxtMouseEntered
-
-    private void NuevoProductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoProductoBtnTxtMouseExited
-        // TODO add your handling code here:
-        
-        NuevoProductoBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_NuevoProductoBtnTxtMouseExited
-
-    private void EliminarProductoBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarProductoBtnTxtMouseEntered
-        // TODO add your handling code here:
-        EliminarProductoBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_EliminarProductoBtnTxtMouseEntered
-
-    private void EliminarProductoBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarProductoBtnTxtMouseExited
-        // TODO add your handling code here:
-        
-        EliminarProductoBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_EliminarProductoBtnTxtMouseExited
-
-    private void GenerarInformeBtnTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerarInformeBtnTxtMouseEntered
-        // TODO add your handling code here:
-        GenerarInformeBtn.setBackground(new Color(110, 122, 147));
-    }//GEN-LAST:event_GenerarInformeBtnTxtMouseEntered
-
-    private void GenerarInformeBtnTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerarInformeBtnTxtMouseExited
-        // TODO add your handling code here:
-         GenerarInformeBtn.setBackground(new Color(144, 153, 162));
-    }//GEN-LAST:event_GenerarInformeBtnTxtMouseExited
 
     private void IdCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IdCotizarTxtMousePressed
         // TODO add your handling code here:
@@ -1785,16 +1189,6 @@ public class Princpal extends javax.swing.JFrame {
             PrecioCotizarTxt.setForeground(Color.gray);
         }
     }//GEN-LAST:event_CantidadCotizarTxtMousePressed
-
-    private void ActualizarClienteBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarClienteBtnMouseEntered
-        // TODO add your handling code here:
-     
-    }//GEN-LAST:event_ActualizarClienteBtnMouseEntered
-
-    private void ActualizarClienteBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarClienteBtnMouseExited
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_ActualizarClienteBtnMouseExited
 
     private void NombrePorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombrePorductoTxtMousePressed
         
@@ -1977,6 +1371,41 @@ public class Princpal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PrecioCotizarTxtMousePressed
 
+    private void TxtRutClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtRutClienteActionPerformed
+        
+       
+    }//GEN-LAST:event_TxtRutClienteActionPerformed
+
+    private void btnGenerarCotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCotizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGenerarCotizarActionPerformed
+
+    private void BtnActualizarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnActualizarProductoActionPerformed
+
+    private void BtnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnEliminarProductoActionPerformed
+
+    private void BtnNuevoProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoProducto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnNuevoProducto1ActionPerformed
+
+    private void BtnAgregarProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarProducto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAgregarProducto1ActionPerformed
+
+    private void BtnGenerarInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGenerarInformeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnGenerarInformeActionPerformed
+
+    private void BtnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarClienteActionPerformed
+        Cliente cliente = new Cliente();
+        cliente.insertarCliente(TxtRutCliente, TxtDvCliente, TxtNombreCliente, TxtTelefonoCliente, TxtRazonSocialCliente, TxtDireccionCliente);
+        
+    }//GEN-LAST:event_BtnAgregarClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2014,64 +1443,49 @@ public class Princpal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ActualizarClienteBtn;
-    private javax.swing.JLabel ActualizarClienteBtnTxt;
-    private javax.swing.JPanel ActualizarPorductoBtn;
-    private javax.swing.JLabel ActualizarProductoBtnTxt;
-    private javax.swing.JPanel AgregarBtn;
-    private javax.swing.JLabel AgregarBtnTxt;
-    private javax.swing.JPanel AgregarClienteBtn;
-    private javax.swing.JLabel AgregarClienteBtnTxt;
-    private javax.swing.JPanel AgregarPorductoBtn;
-    private javax.swing.JLabel AgregarPorductoBtnTxt;
+    private javax.swing.JButton BtnActualizarCliente;
+    private javax.swing.JButton BtnActualizarProducto;
+    private javax.swing.JButton BtnAgregarCliente;
+    private javax.swing.JButton BtnAgregarProducto1;
+    private javax.swing.JButton BtnCliente;
+    private javax.swing.JButton BtnCotizar;
+    private javax.swing.JButton BtnEliminarCliente;
+    private javax.swing.JButton BtnEliminarCotizar;
+    private javax.swing.JButton BtnEliminarProducto;
+    private javax.swing.JButton BtnGenerarInforme;
+    private javax.swing.JButton BtnInforme;
+    private javax.swing.JButton BtnNuevoCliente;
+    private javax.swing.JButton BtnNuevoProducto1;
+    private javax.swing.JButton BtnProducto;
     private javax.swing.JTextField CantidadCotizarTxt;
     private javax.swing.JTextField CantidadPorductoTxt;
     private javax.swing.JTextField CategoriaCotizarTxt;
     private javax.swing.JTextField CategoriaPorductoTxt;
     private javax.swing.JScrollPane ClienteScrollPanel;
     private javax.swing.JPanel ClienteTpb;
-    private javax.swing.JPanel CotizarBtn;
-    private javax.swing.JLabel CotizarBtnTxt;
     private javax.swing.JPanel CotizarTpb;
-    private javax.swing.JTextField DireccionTxt;
-    private javax.swing.JTextField DvTxt;
-    private javax.swing.JPanel EliminarBtn;
-    private javax.swing.JLabel EliminarBtnTxt;
-    private javax.swing.JPanel EliminarClienteBtn;
-    private javax.swing.JLabel EliminarClienteBtnTxt;
-    private javax.swing.JPanel EliminarProductoBtn;
-    private javax.swing.JLabel EliminarProductoBtnTxt;
-    private javax.swing.JPanel GenerarBtn;
-    private javax.swing.JLabel GenerarBtnTxt;
-    private javax.swing.JPanel GenerarInformeBtn;
-    private javax.swing.JLabel GenerarInformeBtnTxt;
     private javax.swing.JTextField IdCotizarTxt;
-    private javax.swing.JPanel InformeBtn;
-    private javax.swing.JLabel InformeBtnTxt;
     private javax.swing.JPanel InformeTpb;
     private javax.swing.JLabel Logo;
     private javax.swing.JTextField MarcaCotizarTxt;
     private javax.swing.JTextField MarcaPorductoTxt;
-    private javax.swing.JTextField NombreClienteTxt;
     private javax.swing.JTextField NombreCotizarTxt;
     private javax.swing.JTextField NombrePorductoTxt;
-    private javax.swing.JPanel NuevoClienteBtn;
-    private javax.swing.JLabel NuevoClienteBtnTxt;
-    private javax.swing.JPanel NuevoProductoBtn;
-    private javax.swing.JLabel NuevoProductoBtnTxt;
     private javax.swing.JTextField PrecioCotizarTxt;
     private javax.swing.JTextField PrecioPorductoTxt;
-    private javax.swing.JPanel ProductoBtn;
-    private javax.swing.JLabel ProductoBtnTxt;
     private javax.swing.JPanel ProductosTpb;
-    private javax.swing.JTextField RazonSocialTxt;
     private javax.swing.JTextField RutClienteCotizarTxt;
-    private javax.swing.JTextField RutClienteTxt;
     private javax.swing.JTabbedPane TablaGeneralTpb;
-    private javax.swing.JTextField TelefonoTxt;
     private javax.swing.JLabel TotalCotizarTxt;
     private javax.swing.JLabel TotalLbl;
+    private javax.swing.JTextField TxtDireccionCliente;
+    private javax.swing.JTextField TxtDvCliente;
+    private javax.swing.JTextField TxtNombreCliente;
+    private javax.swing.JTextField TxtRazonSocialCliente;
+    private javax.swing.JTextField TxtRutCliente;
+    private javax.swing.JTextField TxtTelefonoCliente;
     private javax.swing.JPanel background;
+    private javax.swing.JButton btnGenerarCotizar;
     private javax.swing.JPanel exitBtn;
     private javax.swing.JLabel exitTxt;
     private javax.swing.JLabel fondoSuperior;
