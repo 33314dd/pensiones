@@ -17,8 +17,9 @@ public class Princpal extends javax.swing.JFrame {
     public Princpal() {
         initComponents();
         this.setLocationRelativeTo(null); //nos permite iniciar la ventana del programa en medio del pc
-//    Conexion objetoConexion = new Conexion();
-//    objetoConexion.estableceConexion();
+        Cliente cliente = new Cliente();
+        cliente.mostrarCliente(jTableCliente);
+        TxtIdCliente.setEnabled(false);//nos permite desactivar la modificacion del campo id
     }
 
     @SuppressWarnings("unchecked")
@@ -55,13 +56,14 @@ public class Princpal extends javax.swing.JFrame {
         TxtTelefonoCliente = new javax.swing.JTextField();
         TxtRazonSocialCliente = new javax.swing.JTextField();
         TxtDireccionCliente = new javax.swing.JTextField();
-        ClienteScrollPanel = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         TxtDvCliente = new javax.swing.JTextField();
         BtnEliminarCliente = new javax.swing.JButton();
         BtnAgregarCliente = new javax.swing.JButton();
         BtnActualizarCliente = new javax.swing.JButton();
         BtnNuevoCliente = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableCliente = new javax.swing.JTable();
+        TxtIdCliente = new javax.swing.JTextField();
         ProductosTpb = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -223,6 +225,11 @@ public class Princpal extends javax.swing.JFrame {
         PrecioCotizarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 PrecioCotizarTxtMousePressed(evt);
+            }
+        });
+        PrecioCotizarTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrecioCotizarTxtActionPerformed(evt);
             }
         });
 
@@ -431,25 +438,6 @@ public class Princpal extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setForeground(new java.awt.Color(255, 255, 255));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Rut", "Nombre", "Telefono", "Razon social", "Direccion"
-            }
-        ));
-        jTable2.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        ClienteScrollPanel.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setPreferredWidth(10);
-            jTable2.getColumnModel().getColumn(1).setPreferredWidth(50);
-            jTable2.getColumnModel().getColumn(2).setPreferredWidth(15);
-            jTable2.getColumnModel().getColumn(3).setPreferredWidth(100);
-            jTable2.getColumnModel().getColumn(4).setPreferredWidth(80);
-        }
-
         TxtDvCliente.setForeground(new java.awt.Color(153, 153, 153));
         TxtDvCliente.setText("Dv");
         TxtDvCliente.setSelectionColor(new java.awt.Color(153, 153, 153));
@@ -469,6 +457,11 @@ public class Princpal extends javax.swing.JFrame {
         BtnEliminarCliente.setForeground(new java.awt.Color(255, 255, 255));
         BtnEliminarCliente.setText("ELIMINAR");
         BtnEliminarCliente.setBorderPainted(false);
+        BtnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarClienteActionPerformed(evt);
+            }
+        });
 
         BtnAgregarCliente.setBackground(new java.awt.Color(144, 153, 162));
         BtnAgregarCliente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -486,6 +479,11 @@ public class Princpal extends javax.swing.JFrame {
         BtnActualizarCliente.setForeground(new java.awt.Color(255, 255, 255));
         BtnActualizarCliente.setText("ACTUALIZAR");
         BtnActualizarCliente.setBorderPainted(false);
+        BtnActualizarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnActualizarClienteActionPerformed(evt);
+            }
+        });
 
         BtnNuevoCliente.setBackground(new java.awt.Color(144, 153, 162));
         BtnNuevoCliente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -494,65 +492,99 @@ public class Princpal extends javax.swing.JFrame {
         BtnNuevoCliente.setBorderPainted(false);
         BtnNuevoCliente.setPreferredSize(new java.awt.Dimension(87, 21));
 
+        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jTableCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableClienteMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTableCliente);
+
+        TxtIdCliente.setForeground(new java.awt.Color(153, 153, 153));
+        TxtIdCliente.setText("ID");
+        TxtIdCliente.setSelectionColor(new java.awt.Color(153, 153, 153));
+        TxtIdCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TxtIdClienteMousePressed(evt);
+            }
+        });
+        TxtIdCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtIdClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ClienteTpbLayout = new javax.swing.GroupLayout(ClienteTpb);
         ClienteTpb.setLayout(ClienteTpbLayout);
         ClienteTpbLayout.setHorizontalGroup(
             ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4)
             .addGroup(ClienteTpbLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ClienteTpbLayout.createSequentialGroup()
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TxtNombreCliente)
-                            .addComponent(TxtRazonSocialCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TxtTelefonoCliente)
-                            .addComponent(TxtDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
+                            .addComponent(TxtRazonSocialCliente))
+                        .addGap(18, 18, 18))
                     .addGroup(ClienteTpbLayout.createSequentialGroup()
                         .addComponent(TxtRutCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtDvCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TxtDvCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)))
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TxtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TxtTelefonoCliente)
+                        .addComponent(TxtDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37)
                 .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BtnActualizarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnNuevoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BtnNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BtnAgregarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
-                .addGap(46, 46, 46))
-            .addComponent(ClienteScrollPanel)
+                    .addComponent(BtnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         ClienteTpbLayout.setVerticalGroup(
             ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClienteTpbLayout.createSequentialGroup()
-                .addComponent(ClienteScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ClienteTpbLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TxtRutCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtDvCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtDvCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TxtDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TxtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TxtRazonSocialCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12))
+                            .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(ClienteTpbLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ClienteTpbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BtnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                            .addComponent(BtnActualizarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(22, 22, 22))))
+                            .addComponent(BtnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BtnActualizarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(25, 25, 25))
         );
 
         TablaGeneralTpb.addTab("Cliente", ClienteTpb);
@@ -645,7 +677,6 @@ public class Princpal extends javax.swing.JFrame {
         BtnEliminarProducto.setForeground(new java.awt.Color(255, 255, 255));
         BtnEliminarProducto.setText("ELIMINAR");
         BtnEliminarProducto.setBorderPainted(false);
-        BtnEliminarProducto.setPreferredSize(new java.awt.Dimension(87, 21));
         BtnEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEliminarProductoActionPerformed(evt);
@@ -870,6 +901,10 @@ public class Princpal extends javax.swing.JFrame {
             TxtTelefonoCliente.setText("Telefono");
             TxtTelefonoCliente.setForeground(Color.gray);
         }
+        if (TxtIdCliente.getText().isEmpty()) {
+            TxtIdCliente.setText("ID");
+            TxtIdCliente.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_TxtNombreClienteMousePressed
 
     private void TxtRutClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtRutClienteMousePressed
@@ -897,6 +932,10 @@ public class Princpal extends javax.swing.JFrame {
         if (TxtTelefonoCliente.getText().isEmpty()) {
             TxtTelefonoCliente.setText("Telefono");
             TxtTelefonoCliente.setForeground(Color.gray);
+        }
+        if (TxtIdCliente.getText().isEmpty()) {
+            TxtIdCliente.setText("ID");
+            TxtIdCliente.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtRutClienteMousePressed
 
@@ -926,6 +965,10 @@ public class Princpal extends javax.swing.JFrame {
             TxtTelefonoCliente.setText("Telefono");
             TxtTelefonoCliente.setForeground(Color.gray);
         }
+        if (TxtIdCliente.getText().isEmpty()) {
+            TxtIdCliente.setText("ID");
+            TxtIdCliente.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_TxtRazonSocialClienteMousePressed
 
     private void TxtDireccionClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtDireccionClienteMousePressed
@@ -953,6 +996,10 @@ public class Princpal extends javax.swing.JFrame {
         if (TxtTelefonoCliente.getText().isEmpty()) {
             TxtTelefonoCliente.setText("Telefono");
             TxtTelefonoCliente.setForeground(Color.gray);
+        }
+        if (TxtIdCliente.getText().isEmpty()) {
+            TxtIdCliente.setText("ID");
+            TxtIdCliente.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtDireccionClienteMousePressed
 
@@ -986,6 +1033,10 @@ public class Princpal extends javax.swing.JFrame {
             TxtTelefonoCliente.setText("Telefono");
             TxtTelefonoCliente.setForeground(Color.gray);
         }
+        if (TxtIdCliente.getText().isEmpty()) {
+            TxtIdCliente.setText("ID");
+            TxtIdCliente.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_TxtDvClienteMousePressed
 
     private void TxtDvClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtDvClienteActionPerformed
@@ -1017,6 +1068,11 @@ public class Princpal extends javax.swing.JFrame {
         if (TxtNombreCliente.getText().isEmpty()) {
             TxtNombreCliente.setText("Nombre");
             TxtNombreCliente.setForeground(Color.gray);
+        }
+
+        if (TxtIdCliente.getText().isEmpty()) {
+            TxtIdCliente.setText("ID");
+            TxtIdCliente.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtTelefonoClienteMousePressed
 
@@ -1054,7 +1110,7 @@ public class Princpal extends javax.swing.JFrame {
             PrecioCotizarTxt.setText("Precio");
             PrecioCotizarTxt.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_IdCotizarTxtMousePressed
 
     private void NombreCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombreCotizarTxtMousePressed
@@ -1087,8 +1143,8 @@ public class Princpal extends javax.swing.JFrame {
             PrecioCotizarTxt.setText("Precio");
             PrecioCotizarTxt.setForeground(Color.gray);
         }
-        
-        
+
+
     }//GEN-LAST:event_NombreCotizarTxtMousePressed
 
     private void MarcaCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarcaCotizarTxtMousePressed
@@ -1121,7 +1177,7 @@ public class Princpal extends javax.swing.JFrame {
             PrecioCotizarTxt.setText("Precio");
             PrecioCotizarTxt.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_MarcaCotizarTxtMousePressed
 
     private void CategoriaCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CategoriaCotizarTxtMousePressed
@@ -1154,7 +1210,7 @@ public class Princpal extends javax.swing.JFrame {
             PrecioCotizarTxt.setText("Precio");
             PrecioCotizarTxt.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_CategoriaCotizarTxtMousePressed
 
     private void CantidadCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantidadCotizarTxtMousePressed
@@ -1163,7 +1219,7 @@ public class Princpal extends javax.swing.JFrame {
             CantidadCotizarTxt.setText("");
             CantidadCotizarTxt.setForeground(Color.black);
         }
-        
+
         if (IdCotizarTxt.getText().isEmpty()) {
             IdCotizarTxt.setText("ID");
             IdCotizarTxt.setForeground(Color.gray);
@@ -1191,7 +1247,7 @@ public class Princpal extends javax.swing.JFrame {
     }//GEN-LAST:event_CantidadCotizarTxtMousePressed
 
     private void NombrePorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombrePorductoTxtMousePressed
-        
+
         if (NombrePorductoTxt.getText().equals("Nombre")) {
             NombrePorductoTxt.setText("");
             NombrePorductoTxt.setForeground(Color.black);
@@ -1212,7 +1268,7 @@ public class Princpal extends javax.swing.JFrame {
             CantidadPorductoTxt.setText("Cantidad");
             CantidadPorductoTxt.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_NombrePorductoTxtMousePressed
 
     private void MarcaPorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MarcaPorductoTxtMousePressed
@@ -1282,6 +1338,7 @@ public class Princpal extends javax.swing.JFrame {
             CantidadPorductoTxt.setText("Cantidad");
             CantidadPorductoTxt.setForeground(Color.gray);
         }
+
     }//GEN-LAST:event_CategoriaPorductoTxtMousePressed
 
     private void CantidadPorductoTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CantidadPorductoTxtMousePressed
@@ -1305,6 +1362,7 @@ public class Princpal extends javax.swing.JFrame {
             CategoriaPorductoTxt.setText("Categoria");
             CategoriaPorductoTxt.setForeground(Color.gray);
         }
+
     }//GEN-LAST:event_CantidadPorductoTxtMousePressed
 
     private void RutClienteCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RutClienteCotizarTxtMousePressed
@@ -1337,6 +1395,7 @@ public class Princpal extends javax.swing.JFrame {
             PrecioCotizarTxt.setText("Precio");
             PrecioCotizarTxt.setForeground(Color.gray);
         }
+
     }//GEN-LAST:event_RutClienteCotizarTxtMousePressed
 
     private void PrecioCotizarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrecioCotizarTxtMousePressed
@@ -1369,11 +1428,12 @@ public class Princpal extends javax.swing.JFrame {
             RutClienteCotizarTxt.setText("RutCliente");
             RutClienteCotizarTxt.setForeground(Color.gray);
         }
+
     }//GEN-LAST:event_PrecioCotizarTxtMousePressed
 
     private void TxtRutClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtRutClienteActionPerformed
-        
-       
+
+
     }//GEN-LAST:event_TxtRutClienteActionPerformed
 
     private void btnGenerarCotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCotizarActionPerformed
@@ -1403,8 +1463,75 @@ public class Princpal extends javax.swing.JFrame {
     private void BtnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarClienteActionPerformed
         Cliente cliente = new Cliente();
         cliente.insertarCliente(TxtRutCliente, TxtDvCliente, TxtNombreCliente, TxtTelefonoCliente, TxtRazonSocialCliente, TxtDireccionCliente);
-        
+
+        cliente.mostrarCliente(jTableCliente);
     }//GEN-LAST:event_BtnAgregarClienteActionPerformed
+
+    private void jTableClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClienteMouseClicked
+        Cliente cliente = new Cliente();
+        cliente.seleccionarDatosCliente(jTableCliente,TxtIdCliente, TxtRutCliente, TxtDvCliente, TxtNombreCliente, TxtTelefonoCliente, TxtRazonSocialCliente, TxtDireccionCliente);
+    }//GEN-LAST:event_jTableClienteMouseClicked
+
+    private void BtnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarClienteActionPerformed
+
+        Cliente cliente = new Cliente();
+        cliente.eliminarClienete(TxtIdCliente);
+        cliente.mostrarCliente(jTableCliente);
+
+
+    }//GEN-LAST:event_BtnEliminarClienteActionPerformed
+
+    private void TxtIdClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtIdClienteMousePressed
+        // TODO add your handling code here:
+        if (TxtIdCliente.getText().equals("ID")) {
+            TxtIdCliente.setText("");
+            TxtIdCliente.setForeground(Color.black);
+        }
+
+        if (TxtRutCliente.getText().isEmpty()) {
+            TxtRutCliente.setText("Rut sin Guion");
+            TxtRutCliente.setForeground(Color.gray);
+        }
+        if (TxtRazonSocialCliente.getText().isEmpty()) {
+            TxtRazonSocialCliente.setText("Razon Social");
+            TxtRazonSocialCliente.setForeground(Color.gray);
+        }
+        if (TxtDireccionCliente.getText().isEmpty()) {
+            TxtDireccionCliente.setText("Direccion");
+            TxtDireccionCliente.setForeground(Color.gray);
+        }
+        if (TxtDvCliente.getText().isEmpty()) {
+            TxtDvCliente.setText("Dv");
+            TxtDvCliente.setForeground(Color.gray);
+        }
+        if (TxtNombreCliente.getText().isEmpty()) {
+            TxtNombreCliente.setText("Nombre");
+            TxtNombreCliente.setForeground(Color.gray);
+        }
+        if (TxtTelefonoCliente.getText().isEmpty()) {
+            TxtTelefonoCliente.setText("Telefono");
+            TxtTelefonoCliente.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_TxtIdClienteMousePressed
+
+    private void TxtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtIdClienteActionPerformed
+
+    private void PrecioCotizarTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioCotizarTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrecioCotizarTxtActionPerformed
+
+    private void BtnActualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarClienteActionPerformed
+        Cliente cliente = new Cliente();
+        cliente.modificarDatosCliente(jTableCliente,TxtIdCliente, TxtRutCliente, TxtDvCliente, TxtNombreCliente, TxtTelefonoCliente, TxtRazonSocialCliente, TxtDireccionCliente);
+
+        cliente.mostrarCliente(jTableCliente);
+        
+        
+        
+        
+    }//GEN-LAST:event_BtnActualizarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1461,7 +1588,6 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JTextField CantidadPorductoTxt;
     private javax.swing.JTextField CategoriaCotizarTxt;
     private javax.swing.JTextField CategoriaPorductoTxt;
-    private javax.swing.JScrollPane ClienteScrollPanel;
     private javax.swing.JPanel ClienteTpb;
     private javax.swing.JPanel CotizarTpb;
     private javax.swing.JTextField IdCotizarTxt;
@@ -1480,6 +1606,7 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JLabel TotalLbl;
     private javax.swing.JTextField TxtDireccionCliente;
     private javax.swing.JTextField TxtDvCliente;
+    private javax.swing.JTextField TxtIdCliente;
     private javax.swing.JTextField TxtNombreCliente;
     private javax.swing.JTextField TxtRazonSocialCliente;
     private javax.swing.JTextField TxtRutCliente;
@@ -1493,9 +1620,10 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTableCliente;
     // End of variables declaration//GEN-END:variables
 }
