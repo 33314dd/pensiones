@@ -35,7 +35,7 @@ public class Princpal extends javax.swing.JFrame {
         BtnInforme = new javax.swing.JButton();
         BtnProducto = new javax.swing.JButton();
         BtnCotizar = new javax.swing.JButton();
-        TablaGeneralTpb = new javax.swing.JTabbedPane();
+        TbtTableCotizar = new javax.swing.JTabbedPane();
         CotizarTpb = new javax.swing.JPanel();
         IdCotizarTxt = new javax.swing.JTextField();
         NombreCotizarTxt = new javax.swing.JTextField();
@@ -155,28 +155,48 @@ public class Princpal extends javax.swing.JFrame {
         BtnCliente.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         BtnCliente.setForeground(new java.awt.Color(255, 255, 255));
         BtnCliente.setText("CLIENTE");
+        BtnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnClienteActionPerformed(evt);
+            }
+        });
         background.add(BtnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 180, 40));
 
         BtnInforme.setBackground(new java.awt.Color(144, 153, 162));
         BtnInforme.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         BtnInforme.setForeground(new java.awt.Color(255, 255, 255));
         BtnInforme.setText("INFORME");
+        BtnInforme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInformeActionPerformed(evt);
+            }
+        });
         background.add(BtnInforme, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 180, 40));
 
         BtnProducto.setBackground(new java.awt.Color(144, 153, 162));
         BtnProducto.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         BtnProducto.setForeground(new java.awt.Color(255, 255, 255));
         BtnProducto.setText("PRODUCTOS");
+        BtnProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnProductoActionPerformed(evt);
+            }
+        });
         background.add(BtnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 180, 40));
 
         BtnCotizar.setBackground(new java.awt.Color(144, 153, 162));
         BtnCotizar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         BtnCotizar.setForeground(new java.awt.Color(255, 255, 255));
         BtnCotizar.setText("COTIZAR");
+        BtnCotizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCotizarActionPerformed(evt);
+            }
+        });
         background.add(BtnCotizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 180, 40));
 
-        TablaGeneralTpb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        TablaGeneralTpb.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TbtTableCotizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TbtTableCotizar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         CotizarTpb.setBackground(new java.awt.Color(255, 255, 255));
         CotizarTpb.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -369,7 +389,7 @@ public class Princpal extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        TablaGeneralTpb.addTab("Cotizar", CotizarTpb);
+        TbtTableCotizar.addTab("Cotizar", CotizarTpb);
 
         ClienteTpb.setBackground(new java.awt.Color(255, 255, 255));
         ClienteTpb.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -587,7 +607,7 @@ public class Princpal extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        TablaGeneralTpb.addTab("Cliente", ClienteTpb);
+        TbtTableCotizar.addTab("Cliente", ClienteTpb);
 
         ProductosTpb.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -759,7 +779,7 @@ public class Princpal extends javax.swing.JFrame {
                 .addGap(0, 24, Short.MAX_VALUE))
         );
 
-        TablaGeneralTpb.addTab("Productos", ProductosTpb);
+        TbtTableCotizar.addTab("Productos", ProductosTpb);
 
         InformeTpb.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -811,9 +831,9 @@ public class Princpal extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        TablaGeneralTpb.addTab("Informe", InformeTpb);
+        TbtTableCotizar.addTab("Informe", InformeTpb);
 
-        background.add(TablaGeneralTpb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 580, 370));
+        background.add(TbtTableCotizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 580, 370));
 
         fondoSuperior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/nube3.png"))); // NOI18N
         background.add(fondoSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 810, 490));
@@ -1533,6 +1553,27 @@ public class Princpal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnActualizarClienteActionPerformed
 
+    private void BtnCotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCotizarActionPerformed
+        
+        TbtTableCotizar.setSelectedIndex(0);
+        
+        
+        
+    }//GEN-LAST:event_BtnCotizarActionPerformed
+
+    private void BtnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClienteActionPerformed
+        
+        TbtTableCotizar.setSelectedIndex(1);
+    }//GEN-LAST:event_BtnClienteActionPerformed
+
+    private void BtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductoActionPerformed
+        TbtTableCotizar.setSelectedIndex(2);
+    }//GEN-LAST:event_BtnProductoActionPerformed
+
+    private void BtnInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInformeActionPerformed
+        TbtTableCotizar.setSelectedIndex(3);
+    }//GEN-LAST:event_BtnInformeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1601,7 +1642,7 @@ public class Princpal extends javax.swing.JFrame {
     private javax.swing.JTextField PrecioPorductoTxt;
     private javax.swing.JPanel ProductosTpb;
     private javax.swing.JTextField RutClienteCotizarTxt;
-    private javax.swing.JTabbedPane TablaGeneralTpb;
+    private javax.swing.JTabbedPane TbtTableCotizar;
     private javax.swing.JLabel TotalCotizarTxt;
     private javax.swing.JLabel TotalLbl;
     private javax.swing.JTextField TxtDireccionCliente;
